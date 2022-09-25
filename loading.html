@@ -1,0 +1,2181 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Loading</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/loading/styles.css" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+@font-face {
+}
+/*!
+ * animate.css for Axure - http://animate.axurist.com
+ * Version - 2.0.0
+ * Release date - 18.04.2018
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2018 Dmitriy Kozharskiy
+ */
+{
+}
+    </style>
+    <style type="text/css">
+@font-face {
+//}</style><script type="text/javascript">
+/*! AxureEx 2018-03-17 | dejongh.dk/license */
+// var $, $axure, $var;
+window.open = window.open;
+window.open = function () {
+  "use strict";
+  function initialize() {
+    if (window.$) {
+      $(document).ready(function () {
+       setTimeout(function () {window.open('javascript:');}, 0);
+      });
+     } else {
+      setTimeout(initialize, 0);
+     }
+  }
+  setTimeout(initialize, 0);
+  if (typeof String.prototype.trim !== "function") {
+    String.prototype.trim = function () {
+      return this.replace(/^\s+|\s+$/g, "");
+    };
+  }
+  var _open = window.open;
+  var __open = function(url, a, b, c) {
+      if (c !== undefined) return _open(url, a, b, c);
+      if (b !== undefined) return _open(url, a, b);
+      if (a !== undefined) return _open(url, a);
+      return _open(url);
+  };
+  return function (url, a, b, c) {
+    if ((url.substring(0, 11) !== "javascript:") || (!$axure)) {
+      if (window.openReplace) {
+        window.openReplace = false;
+        window.location.replace(url);
+        return false;
+      }
+      return __open(url, a, b, c);
+    }
+    if (!$axure.error) {
+      var ignoreError;
+      $axure.error = function (msg) {
+         if (console) console.log(msg);
+        if (!ignoreError) ignoreError = !confirm(msg);
+        return false;
+      };
+      $axure.internal(function ($ax) {
+        $axure.debug = $ax.globalVariableProvider.getVariableValue('Debug') !== '';
+      });
+      if (window.AxureExInitialize) window.AxureExInitialize();
+    }
+    var script = url.substring(11).trim();
+    if (false && console) console.log("** " + script + " **\n");
+    if ((script[0] === '/') && (script[1] === '/')) return false;
+    if ((script[0] == '@') || (script[0] == '#')) {
+      var args = script.split("<,>");
+      var src = args[0].split(":");
+      script = $axure(src[0].trim()).text();
+      if (!script) return $axure.error('Widget "' + src[0] + '" not found.');
+      for (var i = 1; i < args.length; i++) {
+        var l = args[i].split(':');
+        script = script.replace("[[" + l[0].trim() + "]]", JSON.stringify(l.slice(1).join(':')).slice(1, -1).replace("'", "\\'"));
+      }
+      if (src.length > 1) {
+        var frame = $axure(src[1].trim()).$().children("iframe")[0];
+        if (!frame) return $axure.error('Widget InlineFrame "' + src[1] + '" not found.');
+        frame = (frame.contentWindow ? frame.contentWindow : frame.contentDocument.document ? frame.contentDocument.document : frame.contentDocument).document;
+        frame.open("text/html", "replace");
+        frame.write(script);
+        frame.close();
+        return false;
+      }
+    }
+    if (script !== '') {
+      if ($axure.debug) script = eval(script);
+      else try {
+        script = eval(script);
+      } catch (err) {
+        return $axure.error("Exception:\n" + err + "\n\nTrace:\n" + err.stack + "\n\nScript:\n" + script.slice(0, 1024));
+      }
+      if (script) return __open('javascript: ' + JSON.stringify(script) + ';', a, b, c);
+    }
+    return false;
+  };
+}();
+if (console) console.log("** AxureEx **");
+//</script><style type="text/css">{
+}
+    </style>
+    <style type="text/css">
+@font-face {
+}
+/* styles for gradient text animation */
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
+div[data-label="animationSandbox"] .text p {
+    letter-spacing: -.05em;
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s infinite linear;
+}
+div[data-label="ButtonPressed"] > div {
+    border: 2px solid #f35626;
+    line-height: 1.375;
+/*    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-weight: 700; */
+    color: #f35626;
+    cursor: pointer;
+    -webkit-animation: hue 60s infinite linear;
+}
+div[data-label="ButtonPressed"] .text p {
+    color: #f35626;
+    cursor: pointer;
+/*    -webkit-animation: hue 60s infinite linear; */
+}
+div[data-label="Line1Text1"] .text, div[data-label="Line1Text3"] .text, div[data-label="Line2Text2"] .text, div[data-label="Line3Text1"] .text a, div[data-label="Line4Text1"] .text a{
+    color: inherit;
+    -webkit-animation: hue 60s infinite linear;
+}
+div[data-label="Line1Text1"] .text:hover, div[data-label="Line1Text3"] .text:hover, div[data-label="Line2Text2"] .text:hover, div[data-label="Line3Text1"] .text a:hover, div[data-label="Line4Text1"] .text a:hover {
+    color: #f35626;
+    text-decoration:none;
+}
+
+/* Remove mouse events from all widgtes with a "^" in their name */
+/* div[data-label*="^"] {pointer-events: none;} */
+
+/* Remove mouse events from all widgtes with "~shadow~" in their name */
+/* div[data-label*="~shadow~"] {pointer-events: none;} */
+
+/* input[type=text] {padding-left: 2px; border: 1px solid #727272; border-radius: 0px;}
+select {border: 0px; border-radius: 0px; background-color:transparent;} */
+
+/* Remove blue outline */
+textarea, input, select { outline: none; }
+
+/* Remove "x" from IE input fields */
+input[type=text]::-ms-clear {display: none;}
+
+/* No resizing of input fields */
+/* textarea {resize: none;} */
+
+/* Hide selection highlight */
+/* * {-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} */
+
+/* do not wrap text */
+/* .nowrap div.text {white-space:nowrap; top: 50% !important;transform: translateY(-50%); overflow:hidden; text-overflow: ellipsis;} */
+{
+}
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+@font-face {
+https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;subset=cyrillic
+}
+    </style>
+    <style type="text/css">
+@font-face {
+https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext
+}
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700&amp;subset=cyrillic,cyrillic-ext,latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=cyrillic,cyrillic-ext,latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/loading/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (animate.axure) -->
+
+      <!-- bounce (Rectangle) -->
+      <div id="u300" class="ax_default box_2 ax_default_hidden" data-label="bounce" style="display:none; visibility: hidden">
+        <div id="u300_div" class=""></div>
+        <div id="u300_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounce';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flash (Rectangle) -->
+      <div id="u301" class="ax_default box_2 ax_default_hidden" data-label="flash" style="display:none; visibility: hidden">
+        <div id="u301_div" class=""></div>
+        <div id="u301_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated flash';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- pulse (Rectangle) -->
+      <div id="u302" class="ax_default box_2 ax_default_hidden" data-label="pulse" style="display:none; visibility: hidden">
+        <div id="u302_div" class=""></div>
+        <div id="u302_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated pulse';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rubberBand (Rectangle) -->
+      <div id="u303" class="ax_default box_2 ax_default_hidden" data-label="rubberBand" style="display:none; visibility: hidden">
+        <div id="u303_div" class=""></div>
+        <div id="u303_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rubberBand';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- shake (Rectangle) -->
+      <div id="u304" class="ax_default box_2 ax_default_hidden" data-label="shake" style="display:none; visibility: hidden">
+        <div id="u304_div" class=""></div>
+        <div id="u304_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated shake';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- headShake (Rectangle) -->
+      <div id="u305" class="ax_default box_2 ax_default_hidden" data-label="headShake" style="display:none; visibility: hidden">
+        <div id="u305_div" class=""></div>
+        <div id="u305_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated headShake';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- swing (Rectangle) -->
+      <div id="u306" class="ax_default box_2 ax_default_hidden" data-label="swing" style="display:none; visibility: hidden">
+        <div id="u306_div" class=""></div>
+        <div id="u306_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated swing';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- tada (Rectangle) -->
+      <div id="u307" class="ax_default box_2 ax_default_hidden" data-label="tada" style="display:none; visibility: hidden">
+        <div id="u307_div" class=""></div>
+        <div id="u307_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated tada';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- wobble (Rectangle) -->
+      <div id="u308" class="ax_default box_2 ax_default_hidden" data-label="wobble" style="display:none; visibility: hidden">
+        <div id="u308_div" class=""></div>
+        <div id="u308_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated wobble';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- jello (Rectangle) -->
+      <div id="u309" class="ax_default box_2 ax_default_hidden" data-label="jello" style="display:none; visibility: hidden">
+        <div id="u309_div" class=""></div>
+        <div id="u309_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated jello';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceIn (Rectangle) -->
+      <div id="u310" class="ax_default box_2 ax_default_hidden" data-label="bounceIn" style="display:none; visibility: hidden">
+        <div id="u310_div" class=""></div>
+        <div id="u310_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceInDown (Rectangle) -->
+      <div id="u311" class="ax_default box_2 ax_default_hidden" data-label="bounceInDown" style="display:none; visibility: hidden">
+        <div id="u311_div" class=""></div>
+        <div id="u311_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceInDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceInLeft (Rectangle) -->
+      <div id="u312" class="ax_default box_2 ax_default_hidden" data-label="bounceInLeft" style="display:none; visibility: hidden">
+        <div id="u312_div" class=""></div>
+        <div id="u312_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceInLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceInRight (Rectangle) -->
+      <div id="u313" class="ax_default box_2 ax_default_hidden" data-label="bounceInRight" style="display:none; visibility: hidden">
+        <div id="u313_div" class=""></div>
+        <div id="u313_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceInRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceInUp (Rectangle) -->
+      <div id="u314" class="ax_default box_2 ax_default_hidden" data-label="bounceInUp" style="display:none; visibility: hidden">
+        <div id="u314_div" class=""></div>
+        <div id="u314_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceInUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOut (Rectangle) -->
+      <div id="u315" class="ax_default box_2 ax_default_hidden" data-label="bounceOut" style="display:none; visibility: hidden">
+        <div id="u315_div" class=""></div>
+        <div id="u315_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOutDown (Rectangle) -->
+      <div id="u316" class="ax_default box_2 ax_default_hidden" data-label="bounceOutDown" style="display:none; visibility: hidden">
+        <div id="u316_div" class=""></div>
+        <div id="u316_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceOutDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOutLeft (Rectangle) -->
+      <div id="u317" class="ax_default box_2 ax_default_hidden" data-label="bounceOutLeft" style="display:none; visibility: hidden">
+        <div id="u317_div" class=""></div>
+        <div id="u317_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceOutLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOutRight (Rectangle) -->
+      <div id="u318" class="ax_default box_2 ax_default_hidden" data-label="bounceOutRight" style="display:none; visibility: hidden">
+        <div id="u318_div" class=""></div>
+        <div id="u318_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceOutRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOutUp (Rectangle) -->
+      <div id="u319" class="ax_default box_2 ax_default_hidden" data-label="bounceOutUp" style="display:none; visibility: hidden">
+        <div id="u319_div" class=""></div>
+        <div id="u319_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated bounceOutUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeIn (Rectangle) -->
+      <div id="u320" class="ax_default box_2 ax_default_hidden" data-label="fadeIn" style="display:none; visibility: hidden">
+        <div id="u320_div" class=""></div>
+        <div id="u320_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInDown (Rectangle) -->
+      <div id="u321" class="ax_default box_2 ax_default_hidden" data-label="fadeInDown" style="display:none; visibility: hidden">
+        <div id="u321_div" class=""></div>
+        <div id="u321_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeInDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInDownBig (Rectangle) -->
+      <div id="u322" class="ax_default box_2 ax_default_hidden" data-label="fadeInDownBig" style="display:none; visibility: hidden">
+        <div id="u322_div" class=""></div>
+        <div id="u322_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeInDownBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInLeft (Rectangle) -->
+      <div id="u323" class="ax_default box_2 ax_default_hidden" data-label="fadeInLeft" style="display:none; visibility: hidden">
+        <div id="u323_div" class=""></div>
+        <div id="u323_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeInLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInLeftBig (Rectangle) -->
+      <div id="u324" class="ax_default box_2 ax_default_hidden" data-label="fadeInLeftBig" style="display:none; visibility: hidden">
+        <div id="u324_div" class=""></div>
+        <div id="u324_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeInLeftBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInRight (Rectangle) -->
+      <div id="u325" class="ax_default box_2 ax_default_hidden" data-label="fadeInRight" style="display:none; visibility: hidden">
+        <div id="u325_div" class=""></div>
+        <div id="u325_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeInRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInRightBig (Rectangle) -->
+      <div id="u326" class="ax_default box_2 ax_default_hidden" data-label="fadeInRightBig" style="display:none; visibility: hidden">
+        <div id="u326_div" class=""></div>
+        <div id="u326_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeInRightBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInUp (Rectangle) -->
+      <div id="u327" class="ax_default box_2 ax_default_hidden" data-label="fadeInUp" style="display:none; visibility: hidden">
+        <div id="u327_div" class=""></div>
+        <div id="u327_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeInUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInUpBig (Rectangle) -->
+      <div id="u328" class="ax_default box_2 ax_default_hidden" data-label="fadeInUpBig" style="display:none; visibility: hidden">
+        <div id="u328_div" class=""></div>
+        <div id="u328_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeInUpBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOut (Rectangle) -->
+      <div id="u329" class="ax_default box_2 ax_default_hidden" data-label="fadeOut" style="display:none; visibility: hidden">
+        <div id="u329_div" class=""></div>
+        <div id="u329_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutDown (Rectangle) -->
+      <div id="u330" class="ax_default box_2 ax_default_hidden" data-label="fadeOutDown" style="display:none; visibility: hidden">
+        <div id="u330_div" class=""></div>
+        <div id="u330_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeOutDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutDownBig (Rectangle) -->
+      <div id="u331" class="ax_default box_2 ax_default_hidden" data-label="fadeOutDownBig" style="display:none; visibility: hidden">
+        <div id="u331_div" class=""></div>
+        <div id="u331_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeOutDownBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutLeft (Rectangle) -->
+      <div id="u332" class="ax_default box_2 ax_default_hidden" data-label="fadeOutLeft" style="display:none; visibility: hidden">
+        <div id="u332_div" class=""></div>
+        <div id="u332_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeOutLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutLeftBig (Rectangle) -->
+      <div id="u333" class="ax_default box_2 ax_default_hidden" data-label="fadeOutLeftBig" style="display:none; visibility: hidden">
+        <div id="u333_div" class=""></div>
+        <div id="u333_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeOutLeftBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutRight (Rectangle) -->
+      <div id="u334" class="ax_default box_2 ax_default_hidden" data-label="fadeOutRight" style="display:none; visibility: hidden">
+        <div id="u334_div" class=""></div>
+        <div id="u334_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeOutRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutRightBig (Rectangle) -->
+      <div id="u335" class="ax_default box_2 ax_default_hidden" data-label="fadeOutRightBig" style="display:none; visibility: hidden">
+        <div id="u335_div" class=""></div>
+        <div id="u335_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeOutRightBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutUp (Rectangle) -->
+      <div id="u336" class="ax_default box_2 ax_default_hidden" data-label="fadeOutUp" style="display:none; visibility: hidden">
+        <div id="u336_div" class=""></div>
+        <div id="u336_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeOutUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutUpBig (Rectangle) -->
+      <div id="u337" class="ax_default box_2 ax_default_hidden" data-label="fadeOutUpBig" style="display:none; visibility: hidden">
+        <div id="u337_div" class=""></div>
+        <div id="u337_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated fadeOutUpBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flip (Rectangle) -->
+      <div id="u338" class="ax_default box_2 ax_default_hidden" data-label="flip" style="display:none; visibility: hidden">
+        <div id="u338_div" class=""></div>
+        <div id="u338_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated flip';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flipInX (Rectangle) -->
+      <div id="u339" class="ax_default box_2 ax_default_hidden" data-label="flipInX" style="display:none; visibility: hidden">
+        <div id="u339_div" class=""></div>
+        <div id="u339_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated flipInX';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flipInY (Rectangle) -->
+      <div id="u340" class="ax_default box_2 ax_default_hidden" data-label="flipInY" style="display:none; visibility: hidden">
+        <div id="u340_div" class=""></div>
+        <div id="u340_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated flipInY';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flipOutX (Rectangle) -->
+      <div id="u341" class="ax_default box_2 ax_default_hidden" data-label="flipOutX" style="display:none; visibility: hidden">
+        <div id="u341_div" class=""></div>
+        <div id="u341_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated flipOutX';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flipOutY (Rectangle) -->
+      <div id="u342" class="ax_default box_2 ax_default_hidden" data-label="flipOutY" style="display:none; visibility: hidden">
+        <div id="u342_div" class=""></div>
+        <div id="u342_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated flipOutY';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- lightSpeedIn (Rectangle) -->
+      <div id="u343" class="ax_default box_2 ax_default_hidden" data-label="lightSpeedIn" style="display:none; visibility: hidden">
+        <div id="u343_div" class=""></div>
+        <div id="u343_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated lightSpeedIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- lightSpeedOut (Rectangle) -->
+      <div id="u344" class="ax_default box_2 ax_default_hidden" data-label="lightSpeedOut" style="display:none; visibility: hidden">
+        <div id="u344_div" class=""></div>
+        <div id="u344_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated lightSpeedOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateIn (Rectangle) -->
+      <div id="u345" class="ax_default box_2 ax_default_hidden" data-label="rotateIn" style="display:none; visibility: hidden">
+        <div id="u345_div" class=""></div>
+        <div id="u345_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateInDownLeft (Rectangle) -->
+      <div id="u346" class="ax_default box_2 ax_default_hidden" data-label="rotateInDownLeft" style="display:none; visibility: hidden">
+        <div id="u346_div" class=""></div>
+        <div id="u346_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateInDownLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateInDownRight (Rectangle) -->
+      <div id="u347" class="ax_default box_2 ax_default_hidden" data-label="rotateInDownRight" style="display:none; visibility: hidden">
+        <div id="u347_div" class=""></div>
+        <div id="u347_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateInDownRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateInUpLeft (Rectangle) -->
+      <div id="u348" class="ax_default box_2 ax_default_hidden" data-label="rotateInUpLeft" style="display:none; visibility: hidden">
+        <div id="u348_div" class=""></div>
+        <div id="u348_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateInUpLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateInUpRight (Rectangle) -->
+      <div id="u349" class="ax_default box_2 ax_default_hidden" data-label="rotateInUpRight" style="display:none; visibility: hidden">
+        <div id="u349_div" class=""></div>
+        <div id="u349_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateInUpRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOut (Rectangle) -->
+      <div id="u350" class="ax_default box_2 ax_default_hidden" data-label="rotateOut" style="display:none; visibility: hidden">
+        <div id="u350_div" class=""></div>
+        <div id="u350_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOutDownLeft (Rectangle) -->
+      <div id="u351" class="ax_default box_2 ax_default_hidden" data-label="rotateOutDownLeft" style="display:none; visibility: hidden">
+        <div id="u351_div" class=""></div>
+        <div id="u351_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateOutDownLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOutDownRight (Rectangle) -->
+      <div id="u352" class="ax_default box_2 ax_default_hidden" data-label="rotateOutDownRight" style="display:none; visibility: hidden">
+        <div id="u352_div" class=""></div>
+        <div id="u352_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateOutDownRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOutUpLeft (Rectangle) -->
+      <div id="u353" class="ax_default box_2 ax_default_hidden" data-label="rotateOutUpLeft" style="display:none; visibility: hidden">
+        <div id="u353_div" class=""></div>
+        <div id="u353_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateOutUpLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOutUpRight (Rectangle) -->
+      <div id="u354" class="ax_default box_2 ax_default_hidden" data-label="rotateOutUpRight" style="display:none; visibility: hidden">
+        <div id="u354_div" class=""></div>
+        <div id="u354_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rotateOutUpRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- hinge (Rectangle) -->
+      <div id="u355" class="ax_default box_2 ax_default_hidden" data-label="hinge" style="display:none; visibility: hidden">
+        <div id="u355_div" class=""></div>
+        <div id="u355_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated hinge';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- jackInTheBox (Rectangle) -->
+      <div id="u356" class="ax_default box_2 ax_default_hidden" data-label="jackInTheBox" style="display:none; visibility: hidden">
+        <div id="u356_div" class=""></div>
+        <div id="u356_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated jackInTheBox';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rollIn (Rectangle) -->
+      <div id="u357" class="ax_default box_2 ax_default_hidden" data-label="rollIn" style="display:none; visibility: hidden">
+        <div id="u357_div" class=""></div>
+        <div id="u357_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rollIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rollOut (Rectangle) -->
+      <div id="u358" class="ax_default box_2 ax_default_hidden" data-label="rollOut" style="display:none; visibility: hidden">
+        <div id="u358_div" class=""></div>
+        <div id="u358_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated rollOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomIn (Rectangle) -->
+      <div id="u359" class="ax_default box_2 ax_default_hidden" data-label="zoomIn" style="display:none; visibility: hidden">
+        <div id="u359_div" class=""></div>
+        <div id="u359_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomInDown (Rectangle) -->
+      <div id="u360" class="ax_default box_2 ax_default_hidden" data-label="zoomInDown" style="display:none; visibility: hidden">
+        <div id="u360_div" class=""></div>
+        <div id="u360_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomInDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomInLeft (Rectangle) -->
+      <div id="u361" class="ax_default box_2 ax_default_hidden" data-label="zoomInLeft" style="display:none; visibility: hidden">
+        <div id="u361_div" class=""></div>
+        <div id="u361_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomInLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomInRight (Rectangle) -->
+      <div id="u362" class="ax_default box_2 ax_default_hidden" data-label="zoomInRight" style="display:none; visibility: hidden">
+        <div id="u362_div" class=""></div>
+        <div id="u362_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomInRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomInUp (Rectangle) -->
+      <div id="u363" class="ax_default box_2 ax_default_hidden" data-label="zoomInUp" style="display:none; visibility: hidden">
+        <div id="u363_div" class=""></div>
+        <div id="u363_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomInUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOut (Rectangle) -->
+      <div id="u364" class="ax_default box_2 ax_default_hidden" data-label="zoomOut" style="display:none; visibility: hidden">
+        <div id="u364_div" class=""></div>
+        <div id="u364_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOutDown (Rectangle) -->
+      <div id="u365" class="ax_default box_2 ax_default_hidden" data-label="zoomOutDown" style="display:none; visibility: hidden">
+        <div id="u365_div" class=""></div>
+        <div id="u365_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomOutDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOutLeft (Rectangle) -->
+      <div id="u366" class="ax_default box_2 ax_default_hidden" data-label="zoomOutLeft" style="display:none; visibility: hidden">
+        <div id="u366_div" class=""></div>
+        <div id="u366_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomOutLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOutRight (Rectangle) -->
+      <div id="u367" class="ax_default box_2 ax_default_hidden" data-label="zoomOutRight" style="display:none; visibility: hidden">
+        <div id="u367_div" class=""></div>
+        <div id="u367_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomOutRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOutUp (Rectangle) -->
+      <div id="u368" class="ax_default box_2 ax_default_hidden" data-label="zoomOutUp" style="display:none; visibility: hidden">
+        <div id="u368_div" class=""></div>
+        <div id="u368_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated zoomOutUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideInDown (Rectangle) -->
+      <div id="u369" class="ax_default box_2 ax_default_hidden" data-label="slideInDown" style="display:none; visibility: hidden">
+        <div id="u369_div" class=""></div>
+        <div id="u369_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated slideInDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideInLeft (Rectangle) -->
+      <div id="u370" class="ax_default box_2 ax_default_hidden" data-label="slideInLeft" style="display:none; visibility: hidden">
+        <div id="u370_div" class=""></div>
+        <div id="u370_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated slideInLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideInRight (Rectangle) -->
+      <div id="u371" class="ax_default box_2 ax_default_hidden" data-label="slideInRight" style="display:none; visibility: hidden">
+        <div id="u371_div" class=""></div>
+        <div id="u371_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated slideInRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideInUp (Rectangle) -->
+      <div id="u372" class="ax_default box_2 ax_default_hidden" data-label="slideInUp" style="display:none; visibility: hidden">
+        <div id="u372_div" class=""></div>
+        <div id="u372_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated slideInUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideOutDown (Rectangle) -->
+      <div id="u373" class="ax_default box_2 ax_default_hidden" data-label="slideOutDown" style="display:none; visibility: hidden">
+        <div id="u373_div" class=""></div>
+        <div id="u373_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated slideOutDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideOutLeft (Rectangle) -->
+      <div id="u374" class="ax_default box_2 ax_default_hidden" data-label="slideOutLeft" style="display:none; visibility: hidden">
+        <div id="u374_div" class=""></div>
+        <div id="u374_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated slideOutLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideOutRight (Rectangle) -->
+      <div id="u375" class="ax_default box_2 ax_default_hidden" data-label="slideOutRight" style="display:none; visibility: hidden">
+        <div id="u375_div" class=""></div>
+        <div id="u375_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated slideOutRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideOutUp (Rectangle) -->
+      <div id="u376" class="ax_default box_2 ax_default_hidden" data-label="slideOutUp" style="display:none; visibility: hidden">
+        <div id="u376_div" class=""></div>
+        <div id="u376_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated slideOutUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounce (Rectangle) -->
+      <div id="u377" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounce" style="display:none; visibility: hidden">
+        <div id="u377_div" class=""></div>
+        <div id="u377_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounce';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.flash (Rectangle) -->
+      <div id="u378" class="ax_default box_2 ax_default_hidden" data-label="infinite.flash" style="display:none; visibility: hidden">
+        <div id="u378_div" class=""></div>
+        <div id="u378_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite flash';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.pulse (Rectangle) -->
+      <div id="u379" class="ax_default box_2 ax_default_hidden" data-label="infinite.pulse" style="display:none; visibility: hidden">
+        <div id="u379_div" class=""></div>
+        <div id="u379_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite pulse';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rubberBand (Rectangle) -->
+      <div id="u380" class="ax_default box_2 ax_default_hidden" data-label="infinite.rubberBand" style="display:none; visibility: hidden">
+        <div id="u380_div" class=""></div>
+        <div id="u380_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rubberBand';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.shake (Rectangle) -->
+      <div id="u381" class="ax_default box_2 ax_default_hidden" data-label="infinite.shake" style="display:none; visibility: hidden">
+        <div id="u381_div" class=""></div>
+        <div id="u381_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite shake';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.headShake (Rectangle) -->
+      <div id="u382" class="ax_default box_2 ax_default_hidden" data-label="infinite.headShake" style="display:none; visibility: hidden">
+        <div id="u382_div" class=""></div>
+        <div id="u382_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite headShake';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.swing (Rectangle) -->
+      <div id="u383" class="ax_default box_2 ax_default_hidden" data-label="infinite.swing" style="display:none; visibility: hidden">
+        <div id="u383_div" class=""></div>
+        <div id="u383_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite swing';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.tada (Rectangle) -->
+      <div id="u384" class="ax_default box_2 ax_default_hidden" data-label="infinite.tada" style="display:none; visibility: hidden">
+        <div id="u384_div" class=""></div>
+        <div id="u384_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite tada';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.wobble (Rectangle) -->
+      <div id="u385" class="ax_default box_2 ax_default_hidden" data-label="infinite.wobble" style="display:none; visibility: hidden">
+        <div id="u385_div" class=""></div>
+        <div id="u385_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite wobble';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.jello (Rectangle) -->
+      <div id="u386" class="ax_default box_2 ax_default_hidden" data-label="infinite.jello" style="display:none; visibility: hidden">
+        <div id="u386_div" class=""></div>
+        <div id="u386_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite jello';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceIn (Rectangle) -->
+      <div id="u387" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceIn" style="display:none; visibility: hidden">
+        <div id="u387_div" class=""></div>
+        <div id="u387_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceInDown (Rectangle) -->
+      <div id="u388" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceInDown" style="display:none; visibility: hidden">
+        <div id="u388_div" class=""></div>
+        <div id="u388_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceInDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceInLeft (Rectangle) -->
+      <div id="u389" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceInLeft" style="display:none; visibility: hidden">
+        <div id="u389_div" class=""></div>
+        <div id="u389_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceInLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceInRight (Rectangle) -->
+      <div id="u390" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceInRight" style="display:none; visibility: hidden">
+        <div id="u390_div" class=""></div>
+        <div id="u390_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceInRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceInUp (Rectangle) -->
+      <div id="u391" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceInUp" style="display:none; visibility: hidden">
+        <div id="u391_div" class=""></div>
+        <div id="u391_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceInUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceOut (Rectangle) -->
+      <div id="u392" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceOut" style="display:none; visibility: hidden">
+        <div id="u392_div" class=""></div>
+        <div id="u392_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceOutDown (Rectangle) -->
+      <div id="u393" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceOutDown" style="display:none; visibility: hidden">
+        <div id="u393_div" class=""></div>
+        <div id="u393_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceOutDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceOutLeft (Rectangle) -->
+      <div id="u394" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceOutLeft" style="display:none; visibility: hidden">
+        <div id="u394_div" class=""></div>
+        <div id="u394_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceOutLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceOutRight (Rectangle) -->
+      <div id="u395" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceOutRight" style="display:none; visibility: hidden">
+        <div id="u395_div" class=""></div>
+        <div id="u395_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceOutRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.bounceOutUp (Rectangle) -->
+      <div id="u396" class="ax_default box_2 ax_default_hidden" data-label="infinite.bounceOutUp" style="display:none; visibility: hidden">
+        <div id="u396_div" class=""></div>
+        <div id="u396_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite bounceOutUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeIn (Rectangle) -->
+      <div id="u397" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeIn" style="display:none; visibility: hidden">
+        <div id="u397_div" class=""></div>
+        <div id="u397_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeInDown (Rectangle) -->
+      <div id="u398" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeInDown" style="display:none; visibility: hidden">
+        <div id="u398_div" class=""></div>
+        <div id="u398_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeInDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeInDownBig (Rectangle) -->
+      <div id="u399" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeInDownBig" style="display:none; visibility: hidden">
+        <div id="u399_div" class=""></div>
+        <div id="u399_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeInDownBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeInLeft (Rectangle) -->
+      <div id="u400" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeInLeft" style="display:none; visibility: hidden">
+        <div id="u400_div" class=""></div>
+        <div id="u400_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeInLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeInLeftBig (Rectangle) -->
+      <div id="u401" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeInLeftBig" style="display:none; visibility: hidden">
+        <div id="u401_div" class=""></div>
+        <div id="u401_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeInLeftBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeInRight (Rectangle) -->
+      <div id="u402" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeInRight" style="display:none; visibility: hidden">
+        <div id="u402_div" class=""></div>
+        <div id="u402_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeInRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeInRightBig (Rectangle) -->
+      <div id="u403" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeInRightBig" style="display:none; visibility: hidden">
+        <div id="u403_div" class=""></div>
+        <div id="u403_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeInRightBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeInUp (Rectangle) -->
+      <div id="u404" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeInUp" style="display:none; visibility: hidden">
+        <div id="u404_div" class=""></div>
+        <div id="u404_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeInUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeInUpBig (Rectangle) -->
+      <div id="u405" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeInUpBig" style="display:none; visibility: hidden">
+        <div id="u405_div" class=""></div>
+        <div id="u405_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeInUpBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeOut (Rectangle) -->
+      <div id="u406" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeOut" style="display:none; visibility: hidden">
+        <div id="u406_div" class=""></div>
+        <div id="u406_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeOutDown (Rectangle) -->
+      <div id="u407" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeOutDown" style="display:none; visibility: hidden">
+        <div id="u407_div" class=""></div>
+        <div id="u407_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeOutDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeOutDownBig (Rectangle) -->
+      <div id="u408" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeOutDownBig" style="display:none; visibility: hidden">
+        <div id="u408_div" class=""></div>
+        <div id="u408_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeOutDownBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeOutLeft (Rectangle) -->
+      <div id="u409" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeOutLeft" style="display:none; visibility: hidden">
+        <div id="u409_div" class=""></div>
+        <div id="u409_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeOutLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeOutLeftBig (Rectangle) -->
+      <div id="u410" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeOutLeftBig" style="display:none; visibility: hidden">
+        <div id="u410_div" class=""></div>
+        <div id="u410_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeOutLeftBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeOutRight (Rectangle) -->
+      <div id="u411" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeOutRight" style="display:none; visibility: hidden">
+        <div id="u411_div" class=""></div>
+        <div id="u411_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeOutRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeOutRightBig (Rectangle) -->
+      <div id="u412" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeOutRightBig" style="display:none; visibility: hidden">
+        <div id="u412_div" class=""></div>
+        <div id="u412_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeOutRightBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeOutUp (Rectangle) -->
+      <div id="u413" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeOutUp" style="display:none; visibility: hidden">
+        <div id="u413_div" class=""></div>
+        <div id="u413_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeOutUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.fadeOutUpBig (Rectangle) -->
+      <div id="u414" class="ax_default box_2 ax_default_hidden" data-label="infinite.fadeOutUpBig" style="display:none; visibility: hidden">
+        <div id="u414_div" class=""></div>
+        <div id="u414_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite fadeOutUpBig';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.flip (Rectangle) -->
+      <div id="u415" class="ax_default box_2 ax_default_hidden" data-label="infinite.flip" style="display:none; visibility: hidden">
+        <div id="u415_div" class=""></div>
+        <div id="u415_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite flip';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.flipInX (Rectangle) -->
+      <div id="u416" class="ax_default box_2 ax_default_hidden" data-label="infinite.flipInX" style="display:none; visibility: hidden">
+        <div id="u416_div" class=""></div>
+        <div id="u416_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite flipInX';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.flipInY (Rectangle) -->
+      <div id="u417" class="ax_default box_2 ax_default_hidden" data-label="infinite.flipInY" style="display:none; visibility: hidden">
+        <div id="u417_div" class=""></div>
+        <div id="u417_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite flipInY';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.flipOutX (Rectangle) -->
+      <div id="u418" class="ax_default box_2 ax_default_hidden" data-label="infinite.flipOutX" style="display:none; visibility: hidden">
+        <div id="u418_div" class=""></div>
+        <div id="u418_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite flipOutX';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.flipOutY (Rectangle) -->
+      <div id="u419" class="ax_default box_2 ax_default_hidden" data-label="infinite.flipOutY" style="display:none; visibility: hidden">
+        <div id="u419_div" class=""></div>
+        <div id="u419_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite flipOutY';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.lightSpeedIn (Rectangle) -->
+      <div id="u420" class="ax_default box_2 ax_default_hidden" data-label="infinite.lightSpeedIn" style="display:none; visibility: hidden">
+        <div id="u420_div" class=""></div>
+        <div id="u420_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite lightSpeedIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.lightSpeedOut (Rectangle) -->
+      <div id="u421" class="ax_default box_2 ax_default_hidden" data-label="infinite.lightSpeedOut" style="display:none; visibility: hidden">
+        <div id="u421_div" class=""></div>
+        <div id="u421_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite lightSpeedOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateIn (Rectangle) -->
+      <div id="u422" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateIn" style="display:none; visibility: hidden">
+        <div id="u422_div" class=""></div>
+        <div id="u422_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateInDownLeft (Rectangle) -->
+      <div id="u423" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateInDownLeft" style="display:none; visibility: hidden">
+        <div id="u423_div" class=""></div>
+        <div id="u423_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateInDownLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateInDownRight (Rectangle) -->
+      <div id="u424" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateInDownRight" style="display:none; visibility: hidden">
+        <div id="u424_div" class=""></div>
+        <div id="u424_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateInDownRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateInUpLeft (Rectangle) -->
+      <div id="u425" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateInUpLeft" style="display:none; visibility: hidden">
+        <div id="u425_div" class=""></div>
+        <div id="u425_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateInUpLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateInUpRight (Rectangle) -->
+      <div id="u426" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateInUpRight" style="display:none; visibility: hidden">
+        <div id="u426_div" class=""></div>
+        <div id="u426_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateInUpRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateOut (Rectangle) -->
+      <div id="u427" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateOut" style="display:none; visibility: hidden">
+        <div id="u427_div" class=""></div>
+        <div id="u427_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateOutDownLeft (Rectangle) -->
+      <div id="u428" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateOutDownLeft" style="display:none; visibility: hidden">
+        <div id="u428_div" class=""></div>
+        <div id="u428_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateOutDownLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateOutDownRight (Rectangle) -->
+      <div id="u429" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateOutDownRight" style="display:none; visibility: hidden">
+        <div id="u429_div" class=""></div>
+        <div id="u429_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateOutDownRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateOutUpLeft (Rectangle) -->
+      <div id="u430" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateOutUpLeft" style="display:none; visibility: hidden">
+        <div id="u430_div" class=""></div>
+        <div id="u430_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateOutUpLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rotateOutUpRight (Rectangle) -->
+      <div id="u431" class="ax_default box_2 ax_default_hidden" data-label="infinite.rotateOutUpRight" style="display:none; visibility: hidden">
+        <div id="u431_div" class=""></div>
+        <div id="u431_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rotateOutUpRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.hinge (Rectangle) -->
+      <div id="u432" class="ax_default box_2 ax_default_hidden" data-label="infinite.hinge" style="display:none; visibility: hidden">
+        <div id="u432_div" class=""></div>
+        <div id="u432_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite hinge';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.jackInTheBox (Rectangle) -->
+      <div id="u433" class="ax_default box_2 ax_default_hidden" data-label="infinite.jackInTheBox" style="display:none; visibility: hidden">
+        <div id="u433_div" class=""></div>
+        <div id="u433_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite jackInTheBox';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rollIn (Rectangle) -->
+      <div id="u434" class="ax_default box_2 ax_default_hidden" data-label="infinite.rollIn" style="display:none; visibility: hidden">
+        <div id="u434_div" class=""></div>
+        <div id="u434_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rollIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.rollOut (Rectangle) -->
+      <div id="u435" class="ax_default box_2 ax_default_hidden" data-label="infinite.rollOut" style="display:none; visibility: hidden">
+        <div id="u435_div" class=""></div>
+        <div id="u435_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite rollOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomIn (Rectangle) -->
+      <div id="u436" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomIn" style="display:none; visibility: hidden">
+        <div id="u436_div" class=""></div>
+        <div id="u436_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomIn';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomInDown (Rectangle) -->
+      <div id="u437" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomInDown" style="display:none; visibility: hidden">
+        <div id="u437_div" class=""></div>
+        <div id="u437_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomInDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomInLeft (Rectangle) -->
+      <div id="u438" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomInLeft" style="display:none; visibility: hidden">
+        <div id="u438_div" class=""></div>
+        <div id="u438_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomInLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomInRight (Rectangle) -->
+      <div id="u439" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomInRight" style="display:none; visibility: hidden">
+        <div id="u439_div" class=""></div>
+        <div id="u439_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomInRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomInUp (Rectangle) -->
+      <div id="u440" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomInUp" style="display:none; visibility: hidden">
+        <div id="u440_div" class=""></div>
+        <div id="u440_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomInUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomOut (Rectangle) -->
+      <div id="u441" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomOut" style="display:none; visibility: hidden">
+        <div id="u441_div" class=""></div>
+        <div id="u441_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomOut';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomOutDown (Rectangle) -->
+      <div id="u442" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomOutDown" style="display:none; visibility: hidden">
+        <div id="u442_div" class=""></div>
+        <div id="u442_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomOutDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomOutLeft (Rectangle) -->
+      <div id="u443" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomOutLeft" style="display:none; visibility: hidden">
+        <div id="u443_div" class=""></div>
+        <div id="u443_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomOutLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomOutRight (Rectangle) -->
+      <div id="u444" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomOutRight" style="display:none; visibility: hidden">
+        <div id="u444_div" class=""></div>
+        <div id="u444_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomOutRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.zoomOutUp (Rectangle) -->
+      <div id="u445" class="ax_default box_2 ax_default_hidden" data-label="infinite.zoomOutUp" style="display:none; visibility: hidden">
+        <div id="u445_div" class=""></div>
+        <div id="u445_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite zoomOutUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.slideInDown (Rectangle) -->
+      <div id="u446" class="ax_default box_2 ax_default_hidden" data-label="infinite.slideInDown" style="display:none; visibility: hidden">
+        <div id="u446_div" class=""></div>
+        <div id="u446_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite slideInDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.slideInLeft (Rectangle) -->
+      <div id="u447" class="ax_default box_2 ax_default_hidden" data-label="infinite.slideInLeft" style="display:none; visibility: hidden">
+        <div id="u447_div" class=""></div>
+        <div id="u447_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite slideInLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.slideInRight (Rectangle) -->
+      <div id="u448" class="ax_default box_2 ax_default_hidden" data-label="infinite.slideInRight" style="display:none; visibility: hidden">
+        <div id="u448_div" class=""></div>
+        <div id="u448_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite slideInRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.slideInUp (Rectangle) -->
+      <div id="u449" class="ax_default box_2 ax_default_hidden" data-label="infinite.slideInUp" style="display:none; visibility: hidden">
+        <div id="u449_div" class=""></div>
+        <div id="u449_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite slideInUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.slideOutDown (Rectangle) -->
+      <div id="u450" class="ax_default box_2 ax_default_hidden" data-label="infinite.slideOutDown" style="display:none; visibility: hidden">
+        <div id="u450_div" class=""></div>
+        <div id="u450_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite slideOutDown';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.slideOutLeft (Rectangle) -->
+      <div id="u451" class="ax_default box_2 ax_default_hidden" data-label="infinite.slideOutLeft" style="display:none; visibility: hidden">
+        <div id="u451_div" class=""></div>
+        <div id="u451_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite slideOutLeft';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.slideOutRight (Rectangle) -->
+      <div id="u452" class="ax_default box_2 ax_default_hidden" data-label="infinite.slideOutRight" style="display:none; visibility: hidden">
+        <div id="u452_div" class=""></div>
+        <div id="u452_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite slideOutRight';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- infinite.slideOutUp (Rectangle) -->
+      <div id="u453" class="ax_default box_2 ax_default_hidden" data-label="infinite.slideOutUp" style="display:none; visibility: hidden">
+        <div id="u453_div" class=""></div>
+        <div id="u453_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationName = 'animated infinite slideOutUp';</span></p><p><span>&nbsp;&nbsp; &nbsp; var animationEnd = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass(animationName).one(animationEnd,function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; $(this).removeClass(animationName);</span></p><p><span>&nbsp;&nbsp; &nbsp; });</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- stop.infinite (Rectangle) -->
+      <div id="u454" class="ax_default box_2 ax_default_hidden" data-label="stop.infinite" style="display:none; visibility: hidden">
+        <div id="u454_div" class=""></div>
+        <div id="u454_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').removeClass('infinite');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounce.noreturn (Rectangle) -->
+      <div id="u455" class="ax_default box_2 ax_default_hidden" data-label="bounce.noreturn" style="display:none; visibility: hidden">
+        <div id="u455_div" class=""></div>
+        <div id="u455_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounce');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flash.noreturn (Rectangle) -->
+      <div id="u456" class="ax_default box_2 ax_default_hidden" data-label="flash.noreturn" style="display:none; visibility: hidden">
+        <div id="u456_div" class=""></div>
+        <div id="u456_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated flash');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- pulse.noreturn (Rectangle) -->
+      <div id="u457" class="ax_default box_2 ax_default_hidden" data-label="pulse.noreturn" style="display:none; visibility: hidden">
+        <div id="u457_div" class=""></div>
+        <div id="u457_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated pulse');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rubberBand.noreturn (Rectangle) -->
+      <div id="u458" class="ax_default box_2 ax_default_hidden" data-label="rubberBand.noreturn" style="display:none; visibility: hidden">
+        <div id="u458_div" class=""></div>
+        <div id="u458_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rubberBand');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- shake.noreturn (Rectangle) -->
+      <div id="u459" class="ax_default box_2 ax_default_hidden" data-label="shake.noreturn" style="display:none; visibility: hidden">
+        <div id="u459_div" class=""></div>
+        <div id="u459_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated shake');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- headShake.noreturn (Rectangle) -->
+      <div id="u460" class="ax_default box_2 ax_default_hidden" data-label="headShake.noreturn" style="display:none; visibility: hidden">
+        <div id="u460_div" class=""></div>
+        <div id="u460_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated headShake');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- swing.noreturn (Rectangle) -->
+      <div id="u461" class="ax_default box_2 ax_default_hidden" data-label="swing.noreturn" style="display:none; visibility: hidden">
+        <div id="u461_div" class=""></div>
+        <div id="u461_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated swing');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- tada.noreturn (Rectangle) -->
+      <div id="u462" class="ax_default box_2 ax_default_hidden" data-label="tada.noreturn" style="display:none; visibility: hidden">
+        <div id="u462_div" class=""></div>
+        <div id="u462_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated tada');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- wobble.noreturn (Rectangle) -->
+      <div id="u463" class="ax_default box_2 ax_default_hidden" data-label="wobble.noreturn" style="display:none; visibility: hidden">
+        <div id="u463_div" class=""></div>
+        <div id="u463_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated wobble');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- jello.noreturn (Rectangle) -->
+      <div id="u464" class="ax_default box_2 ax_default_hidden" data-label="jello.noreturn" style="display:none; visibility: hidden">
+        <div id="u464_div" class=""></div>
+        <div id="u464_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated jello');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceIn.noreturn (Rectangle) -->
+      <div id="u465" class="ax_default box_2 ax_default_hidden" data-label="bounceIn.noreturn" style="display:none; visibility: hidden">
+        <div id="u465_div" class=""></div>
+        <div id="u465_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceIn');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceInDown.noreturn (Rectangle) -->
+      <div id="u466" class="ax_default box_2 ax_default_hidden" data-label="bounceInDown.noreturn" style="display:none; visibility: hidden">
+        <div id="u466_div" class=""></div>
+        <div id="u466_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceInDown');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceInLeft.noreturn (Rectangle) -->
+      <div id="u467" class="ax_default box_2 ax_default_hidden" data-label="bounceInLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u467_div" class=""></div>
+        <div id="u467_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceInLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceInRight.noreturn (Rectangle) -->
+      <div id="u468" class="ax_default box_2 ax_default_hidden" data-label="bounceInRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u468_div" class=""></div>
+        <div id="u468_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceInRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceInUp.noreturn (Rectangle) -->
+      <div id="u469" class="ax_default box_2 ax_default_hidden" data-label="bounceInUp.noreturn" style="display:none; visibility: hidden">
+        <div id="u469_div" class=""></div>
+        <div id="u469_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceInUp');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOut.noreturn (Rectangle) -->
+      <div id="u470" class="ax_default box_2 ax_default_hidden" data-label="bounceOut.noreturn" style="display:none; visibility: hidden">
+        <div id="u470_div" class=""></div>
+        <div id="u470_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceOut');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOutDown.noreturn (Rectangle) -->
+      <div id="u471" class="ax_default box_2 ax_default_hidden" data-label="bounceOutDown.noreturn" style="display:none; visibility: hidden">
+        <div id="u471_div" class=""></div>
+        <div id="u471_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceOutDown');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOutLeft.noreturn (Rectangle) -->
+      <div id="u472" class="ax_default box_2 ax_default_hidden" data-label="bounceOutLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u472_div" class=""></div>
+        <div id="u472_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceOutLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOutRight.noreturn (Rectangle) -->
+      <div id="u473" class="ax_default box_2 ax_default_hidden" data-label="bounceOutRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u473_div" class=""></div>
+        <div id="u473_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceOutRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- bounceOutUp.noreturn (Rectangle) -->
+      <div id="u474" class="ax_default box_2 ax_default_hidden" data-label="bounceOutUp.noreturn" style="display:none; visibility: hidden">
+        <div id="u474_div" class=""></div>
+        <div id="u474_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated bounceOutUp');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeIn.noreturn (Rectangle) -->
+      <div id="u475" class="ax_default box_2 ax_default_hidden" data-label="fadeIn.noreturn" style="display:none; visibility: hidden">
+        <div id="u475_div" class=""></div>
+        <div id="u475_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeIn');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInDown.noreturn (Rectangle) -->
+      <div id="u476" class="ax_default box_2 ax_default_hidden" data-label="fadeInDown.noreturn" style="display:none; visibility: hidden">
+        <div id="u476_div" class=""></div>
+        <div id="u476_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeInDown');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInDownBig.noreturn (Rectangle) -->
+      <div id="u477" class="ax_default box_2 ax_default_hidden" data-label="fadeInDownBig.noreturn" style="display:none; visibility: hidden">
+        <div id="u477_div" class=""></div>
+        <div id="u477_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeInDownBig');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInLeft.noreturn (Rectangle) -->
+      <div id="u478" class="ax_default box_2 ax_default_hidden" data-label="fadeInLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u478_div" class=""></div>
+        <div id="u478_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeInLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInLeftBig.noreturn (Rectangle) -->
+      <div id="u479" class="ax_default box_2 ax_default_hidden" data-label="fadeInLeftBig.noreturn" style="display:none; visibility: hidden">
+        <div id="u479_div" class=""></div>
+        <div id="u479_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeInLeftBig');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInRight.noreturn (Rectangle) -->
+      <div id="u480" class="ax_default box_2 ax_default_hidden" data-label="fadeInRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u480_div" class=""></div>
+        <div id="u480_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeInRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInRightBig.noreturn (Rectangle) -->
+      <div id="u481" class="ax_default box_2 ax_default_hidden" data-label="fadeInRightBig.noreturn" style="display:none; visibility: hidden">
+        <div id="u481_div" class=""></div>
+        <div id="u481_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeInRightBig');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInUp.noreturn (Rectangle) -->
+      <div id="u482" class="ax_default box_2 ax_default_hidden" data-label="fadeInUp.noreturn" style="display:none; visibility: hidden">
+        <div id="u482_div" class=""></div>
+        <div id="u482_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeInUp');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeInUpBig.noreturn (Rectangle) -->
+      <div id="u483" class="ax_default box_2 ax_default_hidden" data-label="fadeInUpBig.noreturn" style="display:none; visibility: hidden">
+        <div id="u483_div" class=""></div>
+        <div id="u483_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeInUpBig');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOut.noreturn (Rectangle) -->
+      <div id="u484" class="ax_default box_2 ax_default_hidden" data-label="fadeOut.noreturn" style="display:none; visibility: hidden">
+        <div id="u484_div" class=""></div>
+        <div id="u484_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeOut');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutDown.noreturn (Rectangle) -->
+      <div id="u485" class="ax_default box_2 ax_default_hidden" data-label="fadeOutDown.noreturn" style="display:none; visibility: hidden">
+        <div id="u485_div" class=""></div>
+        <div id="u485_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeOutDown');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutDownBig.noreturn (Rectangle) -->
+      <div id="u486" class="ax_default box_2 ax_default_hidden" data-label="fadeOutDownBig.noreturn" style="display:none; visibility: hidden">
+        <div id="u486_div" class=""></div>
+        <div id="u486_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeOutDownBig');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutLeft.noreturn (Rectangle) -->
+      <div id="u487" class="ax_default box_2 ax_default_hidden" data-label="fadeOutLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u487_div" class=""></div>
+        <div id="u487_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeOutLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutLeftBig.noreturn (Rectangle) -->
+      <div id="u488" class="ax_default box_2 ax_default_hidden" data-label="fadeOutLeftBig.noreturn" style="display:none; visibility: hidden">
+        <div id="u488_div" class=""></div>
+        <div id="u488_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeOutLeftBig');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutRight.noreturn (Rectangle) -->
+      <div id="u489" class="ax_default box_2 ax_default_hidden" data-label="fadeOutRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u489_div" class=""></div>
+        <div id="u489_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeOutRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutRightBig.noreturn (Rectangle) -->
+      <div id="u490" class="ax_default box_2 ax_default_hidden" data-label="fadeOutRightBig.noreturn" style="display:none; visibility: hidden">
+        <div id="u490_div" class=""></div>
+        <div id="u490_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeOutRightBig');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutUp.noreturn (Rectangle) -->
+      <div id="u491" class="ax_default box_2 ax_default_hidden" data-label="fadeOutUp.noreturn" style="display:none; visibility: hidden">
+        <div id="u491_div" class=""></div>
+        <div id="u491_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeOutUp');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- fadeOutUpBig.noreturn (Rectangle) -->
+      <div id="u492" class="ax_default box_2 ax_default_hidden" data-label="fadeOutUpBig.noreturn" style="display:none; visibility: hidden">
+        <div id="u492_div" class=""></div>
+        <div id="u492_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated fadeOutUpBig');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flip.noreturn (Rectangle) -->
+      <div id="u493" class="ax_default box_2 ax_default_hidden" data-label="flip.noreturn" style="display:none; visibility: hidden">
+        <div id="u493_div" class=""></div>
+        <div id="u493_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated flip');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flipInX.noreturn (Rectangle) -->
+      <div id="u494" class="ax_default box_2 ax_default_hidden" data-label="flipInX.noreturn" style="display:none; visibility: hidden">
+        <div id="u494_div" class=""></div>
+        <div id="u494_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated flipInX');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flipInY.noreturn (Rectangle) -->
+      <div id="u495" class="ax_default box_2 ax_default_hidden" data-label="flipInY.noreturn" style="display:none; visibility: hidden">
+        <div id="u495_div" class=""></div>
+        <div id="u495_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated flipInY');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flipOutX.noreturn (Rectangle) -->
+      <div id="u496" class="ax_default box_2 ax_default_hidden" data-label="flipOutX.noreturn" style="display:none; visibility: hidden">
+        <div id="u496_div" class=""></div>
+        <div id="u496_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated flipOutX');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- flipOutY.noreturn (Rectangle) -->
+      <div id="u497" class="ax_default box_2 ax_default_hidden" data-label="flipOutY.noreturn" style="display:none; visibility: hidden">
+        <div id="u497_div" class=""></div>
+        <div id="u497_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated flipOutY');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- lightSpeedIn.noreturn (Rectangle) -->
+      <div id="u498" class="ax_default box_2 ax_default_hidden" data-label="lightSpeedIn.noreturn" style="display:none; visibility: hidden">
+        <div id="u498_div" class=""></div>
+        <div id="u498_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated lightSpeedIn');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- lightSpeedOut.noreturn (Rectangle) -->
+      <div id="u499" class="ax_default box_2 ax_default_hidden" data-label="lightSpeedOut.noreturn" style="display:none; visibility: hidden">
+        <div id="u499_div" class=""></div>
+        <div id="u499_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated lightSpeedOut');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateIn.noreturn (Rectangle) -->
+      <div id="u500" class="ax_default box_2 ax_default_hidden" data-label="rotateIn.noreturn" style="display:none; visibility: hidden">
+        <div id="u500_div" class=""></div>
+        <div id="u500_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateIn');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateInDownLeft.noreturn (Rectangle) -->
+      <div id="u501" class="ax_default box_2 ax_default_hidden" data-label="rotateInDownLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u501_div" class=""></div>
+        <div id="u501_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateInDownLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateInDownRight.noreturn (Rectangle) -->
+      <div id="u502" class="ax_default box_2 ax_default_hidden" data-label="rotateInDownRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u502_div" class=""></div>
+        <div id="u502_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateInDownRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateInUpLeft.noreturn (Rectangle) -->
+      <div id="u503" class="ax_default box_2 ax_default_hidden" data-label="rotateInUpLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u503_div" class=""></div>
+        <div id="u503_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateInUpLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateInUpRight.noreturn (Rectangle) -->
+      <div id="u504" class="ax_default box_2 ax_default_hidden" data-label="rotateInUpRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u504_div" class=""></div>
+        <div id="u504_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateInUpRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOut.noreturn (Rectangle) -->
+      <div id="u505" class="ax_default box_2 ax_default_hidden" data-label="rotateOut.noreturn" style="display:none; visibility: hidden">
+        <div id="u505_div" class=""></div>
+        <div id="u505_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateOut');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOutDownLeft.noreturn (Rectangle) -->
+      <div id="u506" class="ax_default box_2 ax_default_hidden" data-label="rotateOutDownLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u506_div" class=""></div>
+        <div id="u506_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateOutDownLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOutDownRight.noreturn (Rectangle) -->
+      <div id="u507" class="ax_default box_2 ax_default_hidden" data-label="rotateOutDownRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u507_div" class=""></div>
+        <div id="u507_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateOutDownRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOutUpLeft.noreturn (Rectangle) -->
+      <div id="u508" class="ax_default box_2 ax_default_hidden" data-label="rotateOutUpLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u508_div" class=""></div>
+        <div id="u508_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateOutUpLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rotateOutUpRight.noreturn (Rectangle) -->
+      <div id="u509" class="ax_default box_2 ax_default_hidden" data-label="rotateOutUpRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u509_div" class=""></div>
+        <div id="u509_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rotateOutUpRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- hinge.noreturn (Rectangle) -->
+      <div id="u510" class="ax_default box_2 ax_default_hidden" data-label="hinge.noreturn" style="display:none; visibility: hidden">
+        <div id="u510_div" class=""></div>
+        <div id="u510_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated hinge');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- jackInTheBox.noreturn (Rectangle) -->
+      <div id="u511" class="ax_default box_2 ax_default_hidden" data-label="jackInTheBox.noreturn" style="display:none; visibility: hidden">
+        <div id="u511_div" class=""></div>
+        <div id="u511_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated jackInTheBox');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rollIn.noreturn (Rectangle) -->
+      <div id="u512" class="ax_default box_2 ax_default_hidden" data-label="rollIn.noreturn" style="display:none; visibility: hidden">
+        <div id="u512_div" class=""></div>
+        <div id="u512_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rollIn');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- rollOut.noreturn (Rectangle) -->
+      <div id="u513" class="ax_default box_2 ax_default_hidden" data-label="rollOut.noreturn" style="display:none; visibility: hidden">
+        <div id="u513_div" class=""></div>
+        <div id="u513_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated rollOut');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomIn.noreturn (Rectangle) -->
+      <div id="u514" class="ax_default box_2 ax_default_hidden" data-label="zoomIn.noreturn" style="display:none; visibility: hidden">
+        <div id="u514_div" class=""></div>
+        <div id="u514_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomIn');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomInDown.noreturn (Rectangle) -->
+      <div id="u515" class="ax_default box_2 ax_default_hidden" data-label="zoomInDown.noreturn" style="display:none; visibility: hidden">
+        <div id="u515_div" class=""></div>
+        <div id="u515_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomInDown');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomInLeft.noreturn (Rectangle) -->
+      <div id="u516" class="ax_default box_2 ax_default_hidden" data-label="zoomInLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u516_div" class=""></div>
+        <div id="u516_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomInLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomInRight.noreturn (Rectangle) -->
+      <div id="u517" class="ax_default box_2 ax_default_hidden" data-label="zoomInRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u517_div" class=""></div>
+        <div id="u517_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomInRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomInUp.noreturn (Rectangle) -->
+      <div id="u518" class="ax_default box_2 ax_default_hidden" data-label="zoomInUp.noreturn" style="display:none; visibility: hidden">
+        <div id="u518_div" class=""></div>
+        <div id="u518_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomInUp');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOut.noreturn (Rectangle) -->
+      <div id="u519" class="ax_default box_2 ax_default_hidden" data-label="zoomOut.noreturn" style="display:none; visibility: hidden">
+        <div id="u519_div" class=""></div>
+        <div id="u519_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomOut');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOutDown.noreturn (Rectangle) -->
+      <div id="u520" class="ax_default box_2 ax_default_hidden" data-label="zoomOutDown.noreturn" style="display:none; visibility: hidden">
+        <div id="u520_div" class=""></div>
+        <div id="u520_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomOutDown');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOutLeft.noreturn (Rectangle) -->
+      <div id="u521" class="ax_default box_2 ax_default_hidden" data-label="zoomOutLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u521_div" class=""></div>
+        <div id="u521_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomOutLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOutRight.noreturn (Rectangle) -->
+      <div id="u522" class="ax_default box_2 ax_default_hidden" data-label="zoomOutRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u522_div" class=""></div>
+        <div id="u522_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomOutRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- zoomOutUp.noreturn (Rectangle) -->
+      <div id="u523" class="ax_default box_2 ax_default_hidden" data-label="zoomOutUp.noreturn" style="display:none; visibility: hidden">
+        <div id="u523_div" class=""></div>
+        <div id="u523_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated zoomOutUp');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideInDown.noreturn (Rectangle) -->
+      <div id="u524" class="ax_default box_2 ax_default_hidden" data-label="slideInDown.noreturn" style="display:none; visibility: hidden">
+        <div id="u524_div" class=""></div>
+        <div id="u524_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated slideInDown');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideInLeft.noreturn (Rectangle) -->
+      <div id="u525" class="ax_default box_2 ax_default_hidden" data-label="slideInLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u525_div" class=""></div>
+        <div id="u525_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated slideInLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideInRight.noreturn (Rectangle) -->
+      <div id="u526" class="ax_default box_2 ax_default_hidden" data-label="slideInRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u526_div" class=""></div>
+        <div id="u526_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated slideInRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideInUp.noreturn (Rectangle) -->
+      <div id="u527" class="ax_default box_2 ax_default_hidden" data-label="slideInUp.noreturn" style="display:none; visibility: hidden">
+        <div id="u527_div" class=""></div>
+        <div id="u527_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated slideInUp');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideOutDown.noreturn (Rectangle) -->
+      <div id="u528" class="ax_default box_2 ax_default_hidden" data-label="slideOutDown.noreturn" style="display:none; visibility: hidden">
+        <div id="u528_div" class=""></div>
+        <div id="u528_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated slideOutDown');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideOutLeft.noreturn (Rectangle) -->
+      <div id="u529" class="ax_default box_2 ax_default_hidden" data-label="slideOutLeft.noreturn" style="display:none; visibility: hidden">
+        <div id="u529_div" class=""></div>
+        <div id="u529_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated slideOutLeft');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideOutRight.noreturn (Rectangle) -->
+      <div id="u530" class="ax_default box_2 ax_default_hidden" data-label="slideOutRight.noreturn" style="display:none; visibility: hidden">
+        <div id="u530_div" class=""></div>
+        <div id="u530_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated slideOutRight');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- slideOutUp.noreturn (Rectangle) -->
+      <div id="u531" class="ax_default box_2 ax_default_hidden" data-label="slideOutUp.noreturn" style="display:none; visibility: hidden">
+        <div id="u531_div" class=""></div>
+        <div id="u531_text" class="text ">
+          <p><span>$(function() {</span></p><p><span>&nbsp;&nbsp; &nbsp; $('[data-label=&quot;[[widgetname]]&quot;]').addClass('animated slideOutUp');</span></p><p><span>});&nbsp; void(0);</span></p>
+        </div>
+      </div>
+
+      <!-- copyrightDK (Rectangle) -->
+      <div id="u532" class="ax_default box_2 ax_default_hidden" data-label="copyrightDK" style="display:none; visibility: hidden">
+        <div id="u532_div" class=""></div>
+        <div id="u532_text" class="text ">
+          <p><span>/*!</span></p><p><span>&nbsp;* animate.css for Axure -http://animate.axurist.com</span></p><p><span>&nbsp;* Version - 2.0.0</span></p><p><span>&nbsp;* Release date - 18.04.2018</span></p><p><span>&nbsp;* Licensed under the MIT license - http://opensource.org/licenses/MIT</span></p><p><span>&nbsp;*</span></p><p><span>&nbsp;* Copyright (c) 2018 Dmitriy Kozharskiy</span></p><p><span>&nbsp;*/</span></p>
+        </div>
+      </div>
+      <div id="u299" style="display:none; visibility:hidden;"></div>
+
+      <!-- Unnamed (Image) -->
+      <div id="u533" class="ax_default image">
+        <img id="u533_img" class="img " src="images/loading/u533.png"/>
+        <div id="u533_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+
+      <!-- yo (Rectangle) -->
+      <div id="u534" class="ax_default paragraph" data-label="yo">
+        <div id="u534_div" class=""></div>
+        <div id="u534_text" class="text ">
+          <p><span>YO! </span></p>
+        </div>
+      </div>
+
+      <!-- stay (Rectangle) -->
+      <div id="u535" class="ax_default paragraph" data-label="stay">
+        <div id="u535_div" class=""></div>
+        <div id="u535_text" class="text ">
+          <p><span>stay tuned</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Dynamic Panel) -->
+      <div id="u536" class="ax_default">
+        <div id="u536_state0" class="panel_state" data-label="State1" style="">
+          <div id="u536_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u537" class="ax_default box_3">
+              <div id="u537_div" class=""></div>
+              <div id="u537_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="u536_state1" class="panel_state" data-label="State2" style="visibility: hidden;">
+          <div id="u536_state1_content" class="panel_state_content">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u538" class="ax_default box_3">
+              <div id="u538_div" class=""></div>
+              <div id="u538_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- text load (Rectangle) -->
+      <div id="u539" class="ax_default heading_1" data-label="text load">
+        <div id="u539_div" class=""></div>
+        <div id="u539_text" class="text ">
+          <p><span>0</span></p><p><span><br></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Rectangle) -->
+      <div id="u540" class="ax_default heading_1">
+        <div id="u540_div" class=""></div>
+        <div id="u540_text" class="text ">
+          <p><span>%</span></p>
+        </div>
+      </div>
+    </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>

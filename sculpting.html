@@ -1,0 +1,679 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sculpting</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/sculpting/styles.css" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+@font-face {
+}
+/*!
+ * animate.css for Axure - http://animate.axurist.com
+ * Version - 2.0.0
+ * Release date - 18.04.2018
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2018 Dmitriy Kozharskiy
+ */
+{
+}
+    </style>
+    <style type="text/css">
+@font-face {
+//}</style><script type="text/javascript">
+/*! AxureEx 2018-03-17 | dejongh.dk/license */
+// var $, $axure, $var;
+window.open = window.open;
+window.open = function () {
+  "use strict";
+  function initialize() {
+    if (window.$) {
+      $(document).ready(function () {
+       setTimeout(function () {window.open('javascript:');}, 0);
+      });
+     } else {
+      setTimeout(initialize, 0);
+     }
+  }
+  setTimeout(initialize, 0);
+  if (typeof String.prototype.trim !== "function") {
+    String.prototype.trim = function () {
+      return this.replace(/^\s+|\s+$/g, "");
+    };
+  }
+  var _open = window.open;
+  var __open = function(url, a, b, c) {
+      if (c !== undefined) return _open(url, a, b, c);
+      if (b !== undefined) return _open(url, a, b);
+      if (a !== undefined) return _open(url, a);
+      return _open(url);
+  };
+  return function (url, a, b, c) {
+    if ((url.substring(0, 11) !== "javascript:") || (!$axure)) {
+      if (window.openReplace) {
+        window.openReplace = false;
+        window.location.replace(url);
+        return false;
+      }
+      return __open(url, a, b, c);
+    }
+    if (!$axure.error) {
+      var ignoreError;
+      $axure.error = function (msg) {
+         if (console) console.log(msg);
+        if (!ignoreError) ignoreError = !confirm(msg);
+        return false;
+      };
+      $axure.internal(function ($ax) {
+        $axure.debug = $ax.globalVariableProvider.getVariableValue('Debug') !== '';
+      });
+      if (window.AxureExInitialize) window.AxureExInitialize();
+    }
+    var script = url.substring(11).trim();
+    if (false && console) console.log("** " + script + " **\n");
+    if ((script[0] === '/') && (script[1] === '/')) return false;
+    if ((script[0] == '@') || (script[0] == '#')) {
+      var args = script.split("<,>");
+      var src = args[0].split(":");
+      script = $axure(src[0].trim()).text();
+      if (!script) return $axure.error('Widget "' + src[0] + '" not found.');
+      for (var i = 1; i < args.length; i++) {
+        var l = args[i].split(':');
+        script = script.replace("[[" + l[0].trim() + "]]", JSON.stringify(l.slice(1).join(':')).slice(1, -1).replace("'", "\\'"));
+      }
+      if (src.length > 1) {
+        var frame = $axure(src[1].trim()).$().children("iframe")[0];
+        if (!frame) return $axure.error('Widget InlineFrame "' + src[1] + '" not found.');
+        frame = (frame.contentWindow ? frame.contentWindow : frame.contentDocument.document ? frame.contentDocument.document : frame.contentDocument).document;
+        frame.open("text/html", "replace");
+        frame.write(script);
+        frame.close();
+        return false;
+      }
+    }
+    if (script !== '') {
+      if ($axure.debug) script = eval(script);
+      else try {
+        script = eval(script);
+      } catch (err) {
+        return $axure.error("Exception:\n" + err + "\n\nTrace:\n" + err.stack + "\n\nScript:\n" + script.slice(0, 1024));
+      }
+      if (script) return __open('javascript: ' + JSON.stringify(script) + ';', a, b, c);
+    }
+    return false;
+  };
+}();
+if (console) console.log("** AxureEx **");
+//</script><style type="text/css">{
+}
+    </style>
+    <style type="text/css">
+@font-face {
+}
+/* styles for gradient text animation */
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
+div[data-label="animationSandbox"] .text p {
+    letter-spacing: -.05em;
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s infinite linear;
+}
+div[data-label="ButtonPressed"] > div {
+    border: 2px solid #f35626;
+    line-height: 1.375;
+/*    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-weight: 700; */
+    color: #f35626;
+    cursor: pointer;
+    -webkit-animation: hue 60s infinite linear;
+}
+div[data-label="ButtonPressed"] .text p {
+    color: #f35626;
+    cursor: pointer;
+/*    -webkit-animation: hue 60s infinite linear; */
+}
+div[data-label="Line1Text1"] .text, div[data-label="Line1Text3"] .text, div[data-label="Line2Text2"] .text, div[data-label="Line3Text1"] .text a, div[data-label="Line4Text1"] .text a{
+    color: inherit;
+    -webkit-animation: hue 60s infinite linear;
+}
+div[data-label="Line1Text1"] .text:hover, div[data-label="Line1Text3"] .text:hover, div[data-label="Line2Text2"] .text:hover, div[data-label="Line3Text1"] .text a:hover, div[data-label="Line4Text1"] .text a:hover {
+    color: #f35626;
+    text-decoration:none;
+}
+
+/* Remove mouse events from all widgtes with a "^" in their name */
+/* div[data-label*="^"] {pointer-events: none;} */
+
+/* Remove mouse events from all widgtes with "~shadow~" in their name */
+/* div[data-label*="~shadow~"] {pointer-events: none;} */
+
+/* input[type=text] {padding-left: 2px; border: 1px solid #727272; border-radius: 0px;}
+select {border: 0px; border-radius: 0px; background-color:transparent;} */
+
+/* Remove blue outline */
+textarea, input, select { outline: none; }
+
+/* Remove "x" from IE input fields */
+input[type=text]::-ms-clear {display: none;}
+
+/* No resizing of input fields */
+/* textarea {resize: none;} */
+
+/* Hide selection highlight */
+/* * {-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} */
+
+/* do not wrap text */
+/* .nowrap div.text {white-space:nowrap; top: 50% !important;transform: translateY(-50%); overflow:hidden; text-overflow: ellipsis;} */
+{
+}
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+@font-face {
+https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;subset=cyrillic
+}
+    </style>
+    <style type="text/css">
+@font-face {
+https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext
+}
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700&amp;subset=cyrillic,cyrillic-ext,latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=cyrillic,cyrillic-ext,latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/sculpting/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- ALL (Dynamic Panel) -->
+      <div id="u1108" class="ax_default" data-label="ALL">
+        <div id="u1108_state0" class="panel_state" data-label="State 1" style="">
+          <div id="u1108_state0_content" class="panel_state_content">
+
+            <!-- gradi1 (Rectangle) -->
+            <div id="u1109" class="ax_default box_1" data-label="gradi1">
+              <img id="u1109_img" class="img " src="images/sculpting/gradi1_u1109.svg"/>
+              <div id="u1109_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+
+            <!-- TITLES PROJ (Dynamic Panel) -->
+            <div id="u1110" class="ax_default" data-label="TITLES PROJ">
+              <div id="u1110_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1110_state0_content" class="panel_state_content">
+
+                  <!-- 1t (Dynamic Panel) -->
+                  <div id="u1111" class="ax_default ax_default_hidden" data-label="1t" style="display:none; visibility: hidden">
+                    <div id="u1111_state0" class="panel_state" data-label="State 2" style="">
+                      <div id="u1111_state0_content" class="panel_state_content">
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1112" class="ax_default paragraph">
+                          <div id="u1112_div" class=""></div>
+                          <div id="u1112_text" class="text ">
+                            <p><span>SKULPTING PLACE</span></p>
+                          </div>
+                        </div>
+
+                        <!-- Unnamed (Shape) -->
+                        <div id="u1113" class="ax_default icon ax_default_hidden" style="display:none; visibility: hidden">
+                          <img id="u1113_img" class="img " src="images/sculpting/u1113.svg"/>
+                          <div id="u1113_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 2t (Dynamic Panel) -->
+                  <div id="u1114" class="ax_default ax_default_hidden" data-label="2t" style="display:none; visibility: hidden">
+                    <div id="u1114_state0" class="panel_state" data-label="State 2" style="">
+                      <div id="u1114_state0_content" class="panel_state_content">
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1115" class="ax_default paragraph">
+                          <div id="u1115_div" class=""></div>
+                          <div id="u1115_text" class="text ">
+                            <p><span>Sculpting works. Skulls<br>fruits and other</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u1116" class="ax_default paragraph ax_default_hidden" style="display:none; visibility: hidden">
+                    <div id="u1116_div" class=""></div>
+                    <div id="u1116_text" class="text ">
+                      <p><span>Here are collected training works on sculpting different objects. Sculpting is an integral part of 3D modeling and training helps to develop your skills for future projects.</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PEACH TEXT (Dynamic Panel) -->
+            <div id="u1117" class="ax_default" data-label="PEACH TEXT">
+              <div id="u1117_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1117_state0_content" class="panel_state_content">
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u1118" class="ax_default paragraph ax_default_hidden" style="display:none; visibility: hidden">
+                    <div id="u1118_div" class=""></div>
+                    <div id="u1118_text" class="text ">
+                      <p><span>PEACH</span></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (SVG) -->
+                  <div id="u1119" class="ax_default image ax_default_hidden" style="display:none; visibility: hidden">
+                    <img id="u1119_img" class="img " src="images/sculpting/u1119.svg"/>
+                    <div id="u1119_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PEACH (Dynamic Panel) -->
+            <div id="u1120" class="ax_default" data-label="PEACH">
+              <div id="u1120_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1120_state0_content" class="panel_state_content">
+
+                  <!-- peach (Inline Frame) -->
+                  <div id="u1121" class="ax_default" data-label="peach">
+                    <iframe id="u1121_input" data-label="peach" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                  </div>
+
+                  <!-- Unnamed (Rectangle) -->
+                  <div id="u1122" class="ax_default paragraph ax_default_hidden" style="display:none; visibility: hidden">
+                    <div id="u1122_div" class=""></div>
+                    <div id="u1122_text" class="text ">
+                      <p><span>AR AVAILABLE</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Image) -->
+            <div id="u1123" class="ax_default image">
+              <img id="u1123_img" class="img " src="images/sculpting/u1123.png"/>
+              <div id="u1123_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+
+            <!-- SKULL PANEL (Dynamic Panel) -->
+            <div id="u1124" class="ax_default" data-label="SKULL PANEL">
+              <div id="u1124_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1124_state0_content" class="panel_state_content">
+
+                  <!-- skull (Inline Frame) -->
+                  <div id="u1125" class="ax_default" data-label="skull">
+                    <iframe id="u1125_input" data-label="skull" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                  </div>
+
+                  <!-- 2 (Rectangle) -->
+                  <div id="u1126" class="ax_default paragraph ax_default_hidden" data-label="2" style="display:none; visibility: hidden">
+                    <div id="u1126_div" class=""></div>
+                    <div id="u1126_text" class="text ">
+                      <p><span>AR AVAILABLE</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u1127" class="ax_default" data-left="2010" data-top="120" data-width="661" data-height="774">
+
+              <!-- SKULL TEXT (Dynamic Panel) -->
+              <div id="u1128" class="ax_default" data-label="SKULL TEXT">
+                <div id="u1128_state0" class="panel_state" data-label="State 1" style="">
+                  <div id="u1128_state0_content" class="panel_state_content">
+
+                    <!-- Unnamed (Rectangle) -->
+                    <div id="u1129" class="ax_default paragraph">
+                      <div id="u1129_div" class=""></div>
+                      <div id="u1129_text" class="text ">
+                        <p><span>SKULL</span></p>
+                      </div>
+                    </div>
+
+                    <!-- Unnamed (SVG) -->
+                    <div id="u1130" class="ax_default image">
+                      <img id="u1130_img" class="img " src="images/sculpting/u1130.svg"/>
+                      <div id="u1130_text" class="text " style="display:none; visibility: hidden">
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u1131" class="ax_default paragraph">
+                <div id="u1131_div" class=""></div>
+                <div id="u1131_text" class="text ">
+                  <p><span>Poor Yorick</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u1132" class="ax_default" data-left="5140" data-top="722" data-width="661" data-height="259">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u1133" class="ax_default paragraph">
+                <div id="u1133_div" class=""></div>
+                <div id="u1133_text" class="text ">
+                  <p><span>HORSE</span></p>
+                </div>
+              </div>
+
+              <!-- svg2 (SVG) -->
+              <div id="u1134" class="ax_default image" data-label="svg2">
+                <img id="u1134_img" class="img " src="images/sculpting/u1119.svg"/>
+                <div id="u1134_text" class="text " style="display:none; visibility: hidden">
+                  <p></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u1135" class="ax_default paragraph">
+                <div id="u1135_div" class=""></div>
+                <div id="u1135_text" class="text ">
+                  <p><span>Echo of the wild west</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Image) -->
+            <div id="u1136" class="ax_default image">
+              <img id="u1136_img" class="img " src="images/sculpting/u1136.png"/>
+              <div id="u1136_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+
+            <!-- HORSE PANEL (Dynamic Panel) -->
+            <div id="u1137" class="ax_default" data-label="HORSE PANEL">
+              <div id="u1137_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1137_state0_content" class="panel_state_content">
+
+                  <!-- horse (Inline Frame) -->
+                  <div id="u1138" class="ax_default" data-label="horse">
+                    <iframe id="u1138_input" data-label="horse" scrolling="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                  </div>
+
+                  <!-- 3 (Rectangle) -->
+                  <div id="u1139" class="ax_default paragraph ax_default_hidden" data-label="3" style="display:none; visibility: hidden">
+                    <div id="u1139_div" class=""></div>
+                    <div id="u1139_text" class="text ">
+                      <p><span>AR AVAILABLE</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1140" class="ax_default box_1">
+              <div id="u1140_div" class=""></div>
+              <div id="u1140_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 (Dynamic Panel) -->
+      <div id="u1141" class="ax_default" data-label="2">
+        <div id="u1141_state0" class="panel_state" data-label="State 1" style="">
+          <div id="u1141_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1142" class="ax_default box_1">
+              <div id="u1142_div" class=""></div>
+              <div id="u1142_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Dynamic Panel) -->
+            <div id="u1143" class="ax_default">
+              <div id="u1143_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1143_state0_content" class="panel_state_content">
+
+                  <!-- Texts1 (Group) -->
+                  <div id="u1144" class="ax_default" data-label="Texts1" data-left="0" data-top="0" data-width="661" data-height="787">
+
+                    <!-- SKULL TEXT (Dynamic Panel) -->
+                    <div id="u1145" class="ax_default" data-label="SKULL TEXT">
+                      <div id="u1145_state0" class="panel_state" data-label="State 1" style="">
+                        <div id="u1145_state0_content" class="panel_state_content">
+
+                          <!-- Unnamed (Rectangle) -->
+                          <div id="u1146" class="ax_default paragraph">
+                            <div id="u1146_div" class=""></div>
+                            <div id="u1146_text" class="text ">
+                              <p><span>SKULL</span></p>
+                            </div>
+                          </div>
+
+                          <!-- svg2 (SVG) -->
+                          <div id="u1147" class="ax_default image" data-label="svg2">
+                            <img id="u1147_img" class="img " src="images/sculpting/u1119.svg"/>
+                            <div id="u1147_text" class="text " style="display:none; visibility: hidden">
+                              <p></p>
+                            </div>
+                          </div>
+
+                          <!-- Unnamed (SVG) -->
+                          <div id="u1148" class="ax_default image">
+                            <img id="u1148_img" class="img " src="images/sculpting/u1130.svg"/>
+                            <div id="u1148_text" class="text " style="display:none; visibility: hidden">
+                              <p></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Unnamed (Rectangle) -->
+                    <div id="u1149" class="ax_default paragraph">
+                      <div id="u1149_div" class=""></div>
+                      <div id="u1149_text" class="text ">
+                        <p><span>Poor Yorick</span></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Dynamic Panel) -->
+                  <div id="u1150" class="ax_default">
+                    <div id="u1150_state0" class="panel_state" data-label="State 1" style="">
+                      <div id="u1150_state0_content" class="panel_state_content">
+
+                        <!-- skull (Inline Frame) -->
+                        <div id="u1151" class="ax_default" data-label="skull">
+                          <iframe id="u1151_input" data-label="skull" scrolling="auto" frameborder="1" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+
+                        <!-- 2 (Rectangle) -->
+                        <div id="u1152" class="ax_default paragraph ax_default_hidden" data-label="2" style="display:none; visibility: hidden">
+                          <div id="u1152_div" class=""></div>
+                          <div id="u1152_text" class="text ">
+                            <p><span>AR AVAILABLE</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Image) -->
+                  <div id="u1153" class="ax_default image">
+                    <img id="u1153_img" class="img " src="images/sculpting/u1123.png"/>
+                    <div id="u1153_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 (Dynamic Panel) -->
+      <div id="u1154" class="ax_default" data-label="3">
+        <div id="u1154_state0" class="panel_state" data-label="State 1" style="">
+          <div id="u1154_state0_content" class="panel_state_content">
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1155" class="ax_default box_1">
+              <div id="u1155_div" class=""></div>
+              <div id="u1155_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u1156" class="ax_default" data-left="1300" data-top="722" data-width="661" data-height="259">
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u1157" class="ax_default paragraph">
+                <div id="u1157_div" class=""></div>
+                <div id="u1157_text" class="text ">
+                  <p><span>HORSE</span></p>
+                </div>
+              </div>
+
+              <!-- svg2 (SVG) -->
+              <div id="u1158" class="ax_default image" data-label="svg2">
+                <img id="u1158_img" class="img " src="images/sculpting/u1119.svg"/>
+                <div id="u1158_text" class="text " style="display:none; visibility: hidden">
+                  <p></p>
+                </div>
+              </div>
+
+              <!-- Unnamed (Rectangle) -->
+              <div id="u1159" class="ax_default paragraph">
+                <div id="u1159_div" class=""></div>
+                <div id="u1159_text" class="text ">
+                  <p><span>Echo of the wild west</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Image) -->
+            <div id="u1160" class="ax_default image">
+              <img id="u1160_img" class="img " src="images/sculpting/u1136.png"/>
+              <div id="u1160_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+
+            <!-- HORSE PANEL (Dynamic Panel) -->
+            <div id="u1161" class="ax_default" data-label="HORSE PANEL">
+              <div id="u1161_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1161_state0_content" class="panel_state_content">
+
+                  <!-- horse (Inline Frame) -->
+                  <div id="u1162" class="ax_default" data-label="horse">
+                    <iframe id="u1162_input" data-label="horse" scrolling="auto" frameborder="1" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                  </div>
+
+                  <!-- 3 (Rectangle) -->
+                  <div id="u1163" class="ax_default paragraph ax_default_hidden" data-label="3" style="display:none; visibility: hidden">
+                    <div id="u1163_div" class=""></div>
+                    <div id="u1163_text" class="text ">
+                      <p><span>AR AVAILABLE</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Rectangle) -->
+            <div id="u1164" class="ax_default box_1">
+              <div id="u1164_div" class=""></div>
+              <div id="u1164_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ancor (Rectangle) -->
+      <div id="u1165" class="ax_default box_1" data-label="ancor">
+        <div id="u1165_div" class=""></div>
+        <div id="u1165_text" class="text " style="display:none; visibility: hidden">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>

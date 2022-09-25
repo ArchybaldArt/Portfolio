@@ -1,0 +1,782 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Theatre page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/theatre_page/styles.css" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+@font-face {
+}
+/*!
+ * animate.css for Axure - http://animate.axurist.com
+ * Version - 2.0.0
+ * Release date - 18.04.2018
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2018 Dmitriy Kozharskiy
+ */
+{
+}
+    </style>
+    <style type="text/css">
+@font-face {
+//}</style><script type="text/javascript">
+/*! AxureEx 2018-03-17 | dejongh.dk/license */
+// var $, $axure, $var;
+window.open = window.open;
+window.open = function () {
+  "use strict";
+  function initialize() {
+    if (window.$) {
+      $(document).ready(function () {
+       setTimeout(function () {window.open('javascript:');}, 0);
+      });
+     } else {
+      setTimeout(initialize, 0);
+     }
+  }
+  setTimeout(initialize, 0);
+  if (typeof String.prototype.trim !== "function") {
+    String.prototype.trim = function () {
+      return this.replace(/^\s+|\s+$/g, "");
+    };
+  }
+  var _open = window.open;
+  var __open = function(url, a, b, c) {
+      if (c !== undefined) return _open(url, a, b, c);
+      if (b !== undefined) return _open(url, a, b);
+      if (a !== undefined) return _open(url, a);
+      return _open(url);
+  };
+  return function (url, a, b, c) {
+    if ((url.substring(0, 11) !== "javascript:") || (!$axure)) {
+      if (window.openReplace) {
+        window.openReplace = false;
+        window.location.replace(url);
+        return false;
+      }
+      return __open(url, a, b, c);
+    }
+    if (!$axure.error) {
+      var ignoreError;
+      $axure.error = function (msg) {
+         if (console) console.log(msg);
+        if (!ignoreError) ignoreError = !confirm(msg);
+        return false;
+      };
+      $axure.internal(function ($ax) {
+        $axure.debug = $ax.globalVariableProvider.getVariableValue('Debug') !== '';
+      });
+      if (window.AxureExInitialize) window.AxureExInitialize();
+    }
+    var script = url.substring(11).trim();
+    if (false && console) console.log("** " + script + " **\n");
+    if ((script[0] === '/') && (script[1] === '/')) return false;
+    if ((script[0] == '@') || (script[0] == '#')) {
+      var args = script.split("<,>");
+      var src = args[0].split(":");
+      script = $axure(src[0].trim()).text();
+      if (!script) return $axure.error('Widget "' + src[0] + '" not found.');
+      for (var i = 1; i < args.length; i++) {
+        var l = args[i].split(':');
+        script = script.replace("[[" + l[0].trim() + "]]", JSON.stringify(l.slice(1).join(':')).slice(1, -1).replace("'", "\\'"));
+      }
+      if (src.length > 1) {
+        var frame = $axure(src[1].trim()).$().children("iframe")[0];
+        if (!frame) return $axure.error('Widget InlineFrame "' + src[1] + '" not found.');
+        frame = (frame.contentWindow ? frame.contentWindow : frame.contentDocument.document ? frame.contentDocument.document : frame.contentDocument).document;
+        frame.open("text/html", "replace");
+        frame.write(script);
+        frame.close();
+        return false;
+      }
+    }
+    if (script !== '') {
+      if ($axure.debug) script = eval(script);
+      else try {
+        script = eval(script);
+      } catch (err) {
+        return $axure.error("Exception:\n" + err + "\n\nTrace:\n" + err.stack + "\n\nScript:\n" + script.slice(0, 1024));
+      }
+      if (script) return __open('javascript: ' + JSON.stringify(script) + ';', a, b, c);
+    }
+    return false;
+  };
+}();
+if (console) console.log("** AxureEx **");
+//</script><style type="text/css">{
+}
+    </style>
+    <style type="text/css">
+@font-face {
+}
+/* styles for gradient text animation */
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
+div[data-label="animationSandbox"] .text p {
+    letter-spacing: -.05em;
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s infinite linear;
+}
+div[data-label="ButtonPressed"] > div {
+    border: 2px solid #f35626;
+    line-height: 1.375;
+/*    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-weight: 700; */
+    color: #f35626;
+    cursor: pointer;
+    -webkit-animation: hue 60s infinite linear;
+}
+div[data-label="ButtonPressed"] .text p {
+    color: #f35626;
+    cursor: pointer;
+/*    -webkit-animation: hue 60s infinite linear; */
+}
+div[data-label="Line1Text1"] .text, div[data-label="Line1Text3"] .text, div[data-label="Line2Text2"] .text, div[data-label="Line3Text1"] .text a, div[data-label="Line4Text1"] .text a{
+    color: inherit;
+    -webkit-animation: hue 60s infinite linear;
+}
+div[data-label="Line1Text1"] .text:hover, div[data-label="Line1Text3"] .text:hover, div[data-label="Line2Text2"] .text:hover, div[data-label="Line3Text1"] .text a:hover, div[data-label="Line4Text1"] .text a:hover {
+    color: #f35626;
+    text-decoration:none;
+}
+
+/* Remove mouse events from all widgtes with a "^" in their name */
+/* div[data-label*="^"] {pointer-events: none;} */
+
+/* Remove mouse events from all widgtes with "~shadow~" in their name */
+/* div[data-label*="~shadow~"] {pointer-events: none;} */
+
+/* input[type=text] {padding-left: 2px; border: 1px solid #727272; border-radius: 0px;}
+select {border: 0px; border-radius: 0px; background-color:transparent;} */
+
+/* Remove blue outline */
+textarea, input, select { outline: none; }
+
+/* Remove "x" from IE input fields */
+input[type=text]::-ms-clear {display: none;}
+
+/* No resizing of input fields */
+/* textarea {resize: none;} */
+
+/* Hide selection highlight */
+/* * {-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;} */
+
+/* do not wrap text */
+/* .nowrap div.text {white-space:nowrap; top: 50% !important;transform: translateY(-50%); overflow:hidden; text-overflow: ellipsis;} */
+{
+}
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+@font-face {
+https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&amp;subset=cyrillic
+}
+    </style>
+    <style type="text/css">
+@font-face {
+https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext
+}
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700&amp;subset=cyrillic,cyrillic-ext,latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=cyrillic,cyrillic-ext,latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" type="text/css" rel="stylesheet"/>
+    <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" type="text/css" rel="stylesheet"/>
+    <script src="resources/scripts/jquery-3.2.1.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/recording.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="resources/scripts/axure/legacy.js"></script>
+    <script src="resources/scripts/axure/viewer.js"></script>
+    <script src="resources/scripts/axure/math.js"></script>
+    <script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+    <script src="data/document.js"></script>
+    <script src="files/theatre_page/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- LEFT (Dynamic Panel) -->
+      <div id="u1839" class="ax_default" data-label="LEFT">
+        <div id="u1839_state0" class="panel_state" data-label="State 1" style="">
+          <div id="u1839_state0_content" class="panel_state_content">
+
+            <!-- bg (Dynamic Panel) -->
+            <div id="u1840" class="ax_default" data-label="bg">
+              <div id="u1840_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1840_state0_content" class="panel_state_content">
+
+                  <!-- gradi1 (Rectangle) -->
+                  <div id="u1841" class="ax_default box_1" data-label="gradi1">
+                    <img id="u1841_img" class="img " src="images/sculpting/gradi1_u1109.svg"/>
+                    <div id="u1841_text" class="text ">
+                      <p><span>&nbsp;</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Unnamed (Group) -->
+            <div id="u1842" class="ax_default" data-left="0" data-top="0" data-width="0" data-height="0">
+
+              <!-- 2.1t (Dynamic Panel) -->
+              <div id="u1843" class="ax_default ax_default_hidden" data-label="2.1t" style="display:none; visibility: hidden">
+                <div id="u1843_state0" class="panel_state" data-label="State 1" style="">
+                  <div id="u1843_state0_content" class="panel_state_content">
+
+                    <!-- Unnamed (Rectangle) -->
+                    <div id="u1844" class="ax_default paragraph">
+                      <div id="u1844_div" class=""></div>
+                      <div id="u1844_text" class="text ">
+                        <p><span>uniqe compositions and illustrations <br>for theatrical premiers</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 1.1t (Dynamic Panel) -->
+              <div id="u1845" class="ax_default ax_default_hidden" data-label="1.1t" style="display:none; visibility: hidden">
+                <div id="u1845_state0" class="panel_state" data-label="State 1" style="">
+                  <div id="u1845_state0_content" class="panel_state_content">
+
+                    <!-- Unnamed (Rectangle) -->
+                    <div id="u1846" class="ax_default paragraph">
+                      <div id="u1846_div" class=""></div>
+                      <div id="u1846_text" class="text ">
+                        <p><span>THEATRE POSTERS</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Unnamed (Shape) -->
+              <div id="u1847" class="ax_default icon ax_default_hidden" style="display:none; visibility: hidden">
+                <img id="u1847_img" class="img " src="images/theatre_page/u1847.svg"/>
+                <div id="u1847_text" class="text " style="display:none; visibility: hidden">
+                  <p></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- SKULL TEXT (Dynamic Panel) -->
+            <div id="u1848" class="ax_default ax_default_hidden" data-label="SKULL TEXT" style="display:none; visibility: hidden">
+              <div id="u1848_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1848_state0_content" class="panel_state_content">
+
+                  <!-- Zagolovok (Dynamic Panel) -->
+                  <div id="u1849" class="ax_default" data-label="Zagolovok">
+                    <div id="u1849_state0" class="panel_state" data-label="State 1" style="">
+                      <div id="u1849_state0_content" class="panel_state_content">
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1850" class="ax_default paragraph">
+                          <div id="u1850_div" class=""></div>
+                          <div id="u1850_text" class="text ">
+                            <p><span>Antigone</span></p>
+                          </div>
+                        </div>
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1851" class="ax_default paragraph">
+                          <div id="u1851_div" class=""></div>
+                          <div id="u1851_text" class="text ">
+                            <p><span>performance-composition in one act</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="u1849_state1" class="panel_state" data-label="State 2" style="visibility: hidden;">
+                      <div id="u1849_state1_content" class="panel_state_content">
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1852" class="ax_default paragraph">
+                          <div id="u1852_div" class=""></div>
+                          <div id="u1852_text" class="text ">
+                            <p><span>NEHARMS</span></p>
+                          </div>
+                        </div>
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1853" class="ax_default paragraph">
+                          <div id="u1853_div" class=""></div>
+                          <div id="u1853_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="u1849_state2" class="panel_state" data-label="State 3" style="visibility: hidden;">
+                      <div id="u1849_state2_content" class="panel_state_content">
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1854" class="ax_default paragraph">
+                          <div id="u1854_div" class=""></div>
+                          <div id="u1854_text" class="text ">
+                            <p><span>Wind up your watch</span></p>
+                          </div>
+                        </div>
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1855" class="ax_default paragraph">
+                          <div id="u1855_div" class=""></div>
+                          <div id="u1855_text" class="text ">
+                            <p><span>documentary performance</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="u1849_state3" class="panel_state" data-label="State 4" style="visibility: hidden;">
+                      <div id="u1849_state3_content" class="panel_state_content">
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1856" class="ax_default paragraph">
+                          <div id="u1856_div" class=""></div>
+                          <div id="u1856_text" class="text ">
+                            <p><span>Dreams of Rothko</span></p>
+                          </div>
+                        </div>
+
+                        <!-- Unnamed (Rectangle) -->
+                        <div id="u1857" class="ax_default paragraph">
+                          <div id="u1857_div" class=""></div>
+                          <div id="u1857_text" class="text ">
+                            <p><span>dance performance based on the biography of abstract artist Mark Rothko</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Image) -->
+                  <div id="u1858" class="ax_default image">
+                    <img id="u1858_img" class="img " src="images/theatre_page/u1858.png"/>
+                    <div id="u1858_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+
+                  <!-- Unnamed (Image) -->
+                  <div id="u1859" class="ax_default image">
+                    <img id="u1859_img" class="img " src="images/theatre_page/u1859.png"/>
+                    <div id="u1859_text" class="text " style="display:none; visibility: hidden">
+                      <p></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ho (Group) -->
+            <div id="u1860" class="ax_default" data-label="ho" data-left="145" data-top="56" data-width="38" data-height="38">
+
+              <!-- h (Rectangle) -->
+              <div id="u1861" class="ax_default paragraph ax_default_hidden" data-label="h" style="display:none; visibility: hidden">
+                <div id="u1861_div" class=""></div>
+                <div id="u1861_text" class="text ">
+                  <p><span>HOME</span></p>
+                </div>
+              </div>
+
+              <!-- home (Ellipse) -->
+              <div id="u1862" class="ax_default ellipse" data-label="home">
+                <img id="u1862_img" class="img " src="images/graphic_design/u1837.svg"/>
+                <div id="u1862_text" class="text " style="display:none; visibility: hidden">
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right (Group) -->
+      <div id="u1863" class="ax_default" data-label="right" data-left="1920" data-top="0" data-width="798" data-height="1080">
+
+        <!-- Unnamed (Group) -->
+        <div id="u1864" class="ax_default" data-left="1920" data-top="0" data-width="798" data-height="1080">
+
+          <!-- Unnamed (Group) -->
+          <div id="u1865" class="ax_default" data-left="1920" data-top="0" data-width="748" data-height="1080">
+
+            <!-- afishi (Dynamic Panel) -->
+            <div id="u1866" class="ax_default" data-label="afishi">
+              <div id="u1866_state0" class="panel_state" data-label="State 1" style="">
+                <div id="u1866_state0_content" class="panel_state_content">
+
+                  <!-- Antigona (Dynamic Panel) -->
+                  <div id="u1867" class="ax_default" data-label="Antigona">
+                    <div id="u1867_state0" class="panel_state" data-label="State 1" style="">
+                      <div id="u1867_state0_content" class="panel_state_content">
+
+                        <!-- back (Image) -->
+                        <div id="u1868" class="ax_default image" data-label="back">
+                          <img id="u1868_img" class="img " src="images/theatre_page/back_u1868.png"/>
+                          <div id="u1868_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 6 (Image) -->
+                        <div id="u1869" class="ax_default image" data-label="6">
+                          <img id="u1869_img" class="img " src="images/theatre_page/6_u1869.png"/>
+                          <div id="u1869_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 5 (Image) -->
+                        <div id="u1870" class="ax_default image" data-label="5">
+                          <img id="u1870_img" class="img " src="images/theatre_page/5_u1870.png"/>
+                          <div id="u1870_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 4 (Image) -->
+                        <div id="u1871" class="ax_default image" data-label="4">
+                          <img id="u1871_img" class="img " src="images/theatre_page/4_u1871.png"/>
+                          <div id="u1871_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 3.1 (Image) -->
+                        <div id="u1872" class="ax_default image" data-label="3.1">
+                          <img id="u1872_img" class="img " src="images/theatre_page/3_1_u1872.png"/>
+                          <div id="u1872_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 3 (Image) -->
+                        <div id="u1873" class="ax_default image" data-label="3">
+                          <img id="u1873_img" class="img " src="images/theatre_page/3_u1873.png"/>
+                          <div id="u1873_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 2 (Image) -->
+                        <div id="u1874" class="ax_default image" data-label="2">
+                          <img id="u1874_img" class="img " src="images/theatre_page/2_u1874.png"/>
+                          <div id="u1874_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 1 (Image) -->
+                        <div id="u1875" class="ax_default image" data-label="1">
+                          <img id="u1875_img" class="img " src="images/theatre_page/1_u1875.png"/>
+                          <div id="u1875_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="u1866_state1" class="panel_state" data-label="State 2" style="visibility: hidden;">
+                <div id="u1866_state1_content" class="panel_state_content">
+
+                  <!-- ne harms (Dynamic Panel) -->
+                  <div id="u1876" class="ax_default" data-label="ne harms">
+                    <div id="u1876_state0" class="panel_state" data-label="State 2" style="">
+                      <div id="u1876_state0_content" class="panel_state_content">
+
+                        <!-- 5 (Image) -->
+                        <div id="u1877" class="ax_default image" data-label="5">
+                          <img id="u1877_img" class="img " src="images/theatre_page/5_u1877.png"/>
+                          <div id="u1877_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 4 (Image) -->
+                        <div id="u1878" class="ax_default image" data-label="4">
+                          <img id="u1878_img" class="img " src="images/theatre_page/4_u1878.png"/>
+                          <div id="u1878_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 3 (Image) -->
+                        <div id="u1879" class="ax_default image" data-label="3">
+                          <img id="u1879_img" class="img " src="images/theatre_page/3_u1879.png"/>
+                          <div id="u1879_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 2 (Image) -->
+                        <div id="u1880" class="ax_default image" data-label="2">
+                          <img id="u1880_img" class="img " src="images/theatre_page/2_u1880.png"/>
+                          <div id="u1880_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 1 (Image) -->
+                        <div id="u1881" class="ax_default image" data-label="1">
+                          <img id="u1881_img" class="img " src="images/theatre_page/1_u1881.png"/>
+                          <div id="u1881_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="u1866_state2" class="panel_state" data-label="State 3" style="visibility: hidden;">
+                <div id="u1866_state2_content" class="panel_state_content">
+
+                  <!-- Zavodite (Dynamic Panel) -->
+                  <div id="u1882" class="ax_default" data-label="Zavodite">
+                    <div id="u1882_state0" class="panel_state" data-label="State 1" style="">
+                      <div id="u1882_state0_content" class="panel_state_content">
+
+                        <!-- bg (Image) -->
+                        <div id="u1883" class="ax_default image" data-label="bg">
+                          <img id="u1883_img" class="img " src="images/theatre_page/bg_u1883.png"/>
+                          <div id="u1883_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 5 (Image) -->
+                        <div id="u1884" class="ax_default image" data-label="5">
+                          <img id="u1884_img" class="img " src="images/theatre_page/5_u1884.png"/>
+                          <div id="u1884_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 4 (Image) -->
+                        <div id="u1885" class="ax_default image" data-label="4">
+                          <img id="u1885_img" class="img " src="images/theatre_page/4_u1885.png"/>
+                          <div id="u1885_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 3 (Image) -->
+                        <div id="u1886" class="ax_default image" data-label="3">
+                          <img id="u1886_img" class="img " src="images/theatre_page/3_u1886.png"/>
+                          <div id="u1886_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 2 (Image) -->
+                        <div id="u1887" class="ax_default image" data-label="2">
+                          <img id="u1887_img" class="img " src="images/theatre_page/2_u1887.png"/>
+                          <div id="u1887_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 1 (Image) -->
+                        <div id="u1888" class="ax_default image" data-label="1">
+                          <img id="u1888_img" class="img " src="images/theatre_page/1_u1888.png"/>
+                          <div id="u1888_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="u1866_state3" class="panel_state" data-label="State 4" style="visibility: hidden;">
+                <div id="u1866_state3_content" class="panel_state_content">
+
+                  <!-- ROTKO (Dynamic Panel) -->
+                  <div id="u1889" class="ax_default" data-label="ROTKO">
+                    <div id="u1889_state0" class="panel_state" data-label="State 1" style="">
+                      <div id="u1889_state0_content" class="panel_state_content">
+
+                        <!-- bg (Image) -->
+                        <div id="u1890" class="ax_default image" data-label="bg">
+                          <img id="u1890_img" class="img " src="images/theatre_page/bg_u1890.png"/>
+                          <div id="u1890_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 5 (Image) -->
+                        <div id="u1891" class="ax_default image" data-label="5">
+                          <img id="u1891_img" class="img " src="images/theatre_page/5_u1891.png"/>
+                          <div id="u1891_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 4 (Image) -->
+                        <div id="u1892" class="ax_default image" data-label="4">
+                          <img id="u1892_img" class="img " src="images/theatre_page/4_u1892.png"/>
+                          <div id="u1892_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 3 (Image) -->
+                        <div id="u1893" class="ax_default image" data-label="3">
+                          <img id="u1893_img" class="img " src="images/theatre_page/3_u1893.png"/>
+                          <div id="u1893_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 2 (Image) -->
+                        <div id="u1894" class="ax_default image" data-label="2">
+                          <img id="u1894_img" class="img " src="images/theatre_page/2_u1894.png"/>
+                          <div id="u1894_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+
+                        <!-- 1 (Image) -->
+                        <div id="u1895" class="ax_default image" data-label="1">
+                          <img id="u1895_img" class="img " src="images/theatre_page/1_u1895.png"/>
+                          <div id="u1895_text" class="text " style="display:none; visibility: hidden">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unnamed (Group) -->
+          <div id="u1896" class="ax_default" data-left="2698" data-top="426" data-width="20" data-height="181">
+
+            <!-- 1 (Ellipse) -->
+            <div id="u1897" class="ax_default ellipse" data-label="1">
+              <img id="u1897_img" class="img " src="images/theatre_page/1_u1897.svg"/>
+              <div id="u1897_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+
+            <!-- 2 (Ellipse) -->
+            <div id="u1898" class="ax_default ellipse" data-label="2">
+              <img id="u1898_img" class="img " src="images/theatre_page/1_u1897.svg"/>
+              <div id="u1898_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+
+            <!-- 3 (Ellipse) -->
+            <div id="u1899" class="ax_default ellipse" data-label="3">
+              <img id="u1899_img" class="img " src="images/theatre_page/1_u1897.svg"/>
+              <div id="u1899_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+
+            <!-- 4 (Ellipse) -->
+            <div id="u1900" class="ax_default ellipse" data-label="4">
+              <img id="u1900_img" class="img " src="images/theatre_page/1_u1897.svg"/>
+              <div id="u1900_text" class="text " style="display:none; visibility: hidden">
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Group) -->
+        <div id="u1901" class="ax_default ax_default_hidden" style="display:none; visibility: hidden" data-left="2680.888866848298" data-top="9.36712410089035" data-width="425.222266303404" data-height="475.26575179821975">
+
+          <!-- Unnamed (Image) -->
+          <div id="u1902" class="ax_default image">
+            <img id="u1902_img" class="img " src="images/theatre_page/u1902.png"/>
+            <div id="u1902_text" class="text " style="display:none; visibility: hidden">
+              <p></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Image) -->
+          <div id="u1903" class="ax_default image">
+            <img id="u1903_img" class="img " src="images/theatre_page/u1903.png"/>
+            <div id="u1903_text" class="text " style="display:none; visibility: hidden">
+              <p></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unnamed (Group) -->
+        <div id="u1904" class="ax_default ax_default_hidden" style="display:none; visibility: hidden" data-left="2749.2817748429197" data-top="605.4963333154003" data-width="368.4364503141601" data-height="439.0073333691994">
+
+          <!-- Unnamed (Image) -->
+          <div id="u1905" class="ax_default image">
+            <img id="u1905_img" class="img " src="images/theatre_page/u1902.png"/>
+            <div id="u1905_text" class="text " style="display:none; visibility: hidden">
+              <p></p>
+            </div>
+          </div>
+
+          <!-- Unnamed (Image) -->
+          <div id="u1906" class="ax_default image">
+            <img id="u1906_img" class="img " src="images/theatre_page/u1903.png"/>
+            <div id="u1906_text" class="text " style="display:none; visibility: hidden">
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="resources/scripts/axure/ios.js"></script>
+  </body>
+</html>
